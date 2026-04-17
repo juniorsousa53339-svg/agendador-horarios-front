@@ -1,1 +1,13 @@
-<p>servico-card works</p>
+<button class="card" [class.card--selected]="selecionado" (click)="onSelecionar()">
+  <div class="card_header">
+    <h3>{{ servico.nome }}</h3>
+    <span class="card_preco">{{ servico.preco | currency: 'BRL' }}</span>
+  </div>
+
+  <p class="card_descricao" *ngIf="servico.descricao">{{ servico.descricao }}</p>
+
+  <div class="card_footer">
+    <span>{{ servico.duracaoMin }} min</span>
+    <Span class="card_badge" *ngIf="selecionado">Selecionado</Span>
+  </div>
+</button>

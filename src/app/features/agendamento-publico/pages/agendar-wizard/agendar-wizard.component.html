@@ -1,1 +1,29 @@
-<p>agendar-wizard works!</p>
+<section class="wizard">
+  <header class="wizard__header">
+    <h1>Agendar horário</h1>
+    <p>Passo {{ passoAtual }} de 4</p>
+  </header>
+
+  <div class="wizard__step" *ngIf="passoAtual === 1">
+    <h2>Escolha o serviço</h2>
+
+    <div class="wizard__lista">
+      <app-servico-card
+        *ngFor="let servico of servicos"
+        [servico]="servico"
+        [selecionado]="servicoSelecionado?.id === servico.id"
+        (selecionar)="selecionarServico($event)"
+      />
+    </div>
+  </div>
+
+  <footer class="wizard__footer">
+    <button
+      class="btn-primary"
+      [disabled]="!servicoSelecionado"
+      (click)="irParaProximoPasso()"
+    >
+      Continuar
+    </button>
+  </footer>
+</section>
