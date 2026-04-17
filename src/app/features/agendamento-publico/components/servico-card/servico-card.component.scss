@@ -1,77 +1,43 @@
 .card {
   width: 100%;
-
-  // estrutura visual base do card
-  border: 1px solid #e7e7e7;
-  border-radius: 12px;
-  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
   background: #fff;
-
+  padding: 14px;
   text-align: left;
-
-  // animações suaves para interação
-  transition: 0.2s ease;
-
-  // layout vertical (mobile-first)
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  // feedback de toque (mobile UX)
-  &:active {
-    transform: scale(0.99);
-  }
-
-  // estado visual quando selecionado
   &--selected {
-    border-color: #111;
-    box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.08);
+    border-color: #111827;
+    box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
   }
-}
-
-.card__header {
-  // layout horizontal (nome + preço)
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 12px;
 
   h3 {
-    margin: 0; // remove margem padrão
+    margin: 0;
     font-size: 1rem;
-    font-weight: 600;
-    color: #1f1f1f;
+    color: #111827;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #6b7280;
   }
 }
 
-.card__preco {
-  // destaque visual do preço
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #111;
-}
-
-.card__descricao {
-  // texto secundário
-  margin: 0;
-  font-size: 0.875rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-.card__footer {
-  // distribuição entre duração e badge
+.card__top, .card__bottom {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  font-size: 0.8125rem;
-  color: #777;
+  gap: 8px;
 }
 
-.card__badge {
-  // badge de status (ex: selecionado)
-  background: #111;
-  color: #fff;
-  padding: 2px 8px;
-  border-radius: 999px;
+.badge {
   font-size: 0.75rem;
+  background: #111827;
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 8px;
 }
