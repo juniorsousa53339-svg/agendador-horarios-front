@@ -1,29 +1,30 @@
 .card {
   width: 100%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #ad8b4a;
   border-radius: 14px;
-  background: #fff;
-  padding: 14px;
+  background: #C5A059;
+  padding: 30px;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
   &--selected {
-    border-color: #111827;
+    border-color: #918774;
+;
     box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
   }
 
   h3 {
     margin: 0;
     font-size: 1rem;
-    color: #111827;
+    color: #fff;
   }
 
   p {
     margin: 0;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #D9D9D9;
   }
 }
 
@@ -36,7 +37,7 @@
 
 .badge {
   font-size: 0.75rem;
-  background: #111827;
+  background: #D9D9D9;
   color: #fff;
   border-radius: 999px;
   padding: 2px 8px;
