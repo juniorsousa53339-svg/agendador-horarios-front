@@ -1,13 +1,18 @@
 <button class="card" [class.card--selected]="selecionado" (click)="onClick()">
-  <div class="card__top">
-    <h3>{{ servico.nome }}</h3>
-    <strong>{{ servico.preco | currency:'BRL' }}</strong>
-  </div>
 
-  <p *ngIf="servico.descricao">{{ servico.descricao }}</p>
+  <h3>{{ servico.nome }}</h3>
+
+  <p >
+    {{ servico.descricao }}
+  </p>
+
+  <div class="card__meta">
+    <strong>{{ servico.preco | currency:'BRL' }}</strong>
+    <span>{{ servico.duracaoMin }} min</span>
+  </div>
 
   <div class="card__bottom">
-    <span>{{ servico.duracaoMin }} min</span>
     <span class="badge" *ngIf="selecionado">Selecionado</span>
   </div>
+
 </button>

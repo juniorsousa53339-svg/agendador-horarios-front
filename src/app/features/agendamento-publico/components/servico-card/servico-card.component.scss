@@ -1,44 +1,74 @@
 .card {
   width: 100%;
-  border: 1px solid #ad8b4a;
+  max-width: 400px; // evita ficar gigante em telas grandes
+
+  border: 1px solid #000000;
   border-radius: 14px;
-  background: #C5A059;
-  padding: 30px;
+  background: #1D2548;
+
+  padding: 20px 37px 37px;
   text-align: left;
+
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px; // controla espaçamento geral
 
-  &--selected {
-    border-color: #918774;
-;
-    box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
+  // sombra padrão (estado normal)
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  // animação suave
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  // transition = o que vai animar
+  // 0.2s = duração
+  // ease = curva suave (acelera e desacelera)
+
+  // efeito desktop (hover)
+  &:hover {
+    transform: translateY(-4px); // sobe levemente
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); // sombra mais forte
+  }
+
+  // efeito mobile (toque)
+  &:active {
+    transform: scale(0.97); // dá efeito de "pressionado"
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   }
 
   h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif; // corrigido
     color: #fff;
+
+    margin-top: -6px; // ajuste leve (evita exagero)
   }
 
   p {
     margin: 0;
-    font-size: 0.875rem;
-    color: #D9D9D9;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #ccc;
+       line-height: 1.4;
   }
-}
 
-.card__top, .card__bottom {
+
+}
+.card__meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
+  gap: 40px; // 👈 controla a distância entre eles
 
-.badge {
-  font-size: 0.75rem;
-  background: #D9D9D9;
-  color: #fff;
-  border-radius: 999px;
-  padding: 2px 8px;
+  margin-top: 10px; //  espacinho pequeno depois da descrição
+
+  strong {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #ccc;
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 300; // 👈 light
+    color: #ccc;
+  }
 }
