@@ -1,6 +1,10 @@
 .card {
-  width: 100%;
+  width: 200%;
   max-width: 400px; // evita ficar gigante em telas grandes
+
+  margin-top: 60px; // AQUI você controla a altura
+ margin: 20px auto 0;
+
 
   border: 1px solid #000000;
   border-radius: 14px;
@@ -11,7 +15,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 6px; // controla espaçamento geral
+  gap: 10px; // controla espaçamento geral
 
   // sombra padrão (estado normal)
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -56,7 +60,7 @@
 .card__meta {
   display: flex;
   align-items: center;
-  gap: 40px; // 👈 controla a distância entre eles
+  gap: 40px; // controla a distância entre eles
 
   margin-top: 10px; //  espacinho pequeno depois da descrição
 
@@ -68,7 +72,11 @@
 
   span {
     font-size: 0.85rem;
-    font-weight: 300; // 👈 light
+    font-weight: 300; //  light
     color: #ccc;
   }
 }
+
+
+
+
