@@ -1,7 +1,14 @@
 import { Routes } from '@angular/router';
-import { AGENDAMENTO_PUBLICO_ROUTES } from './features/agendamento-publico/agendamento-publico.routes';
+import { ServicosPageComponent } from './features/cliente/pages/servicos-page/servicos-page.component';
 
 export const routes: Routes = [
-  ...AGENDAMENTO_PUBLICO_ROUTES,
-  { path: '**', redirectTo: '' },
+  {
+    path: '',
+    redirectTo: 'cliente/agendar/servicos',
+    pathMatch: 'full'
+  },
+  {
+    path: 'cliente/agendar/servicos',
+    component: ServicosPageComponent
+  }
 ];
