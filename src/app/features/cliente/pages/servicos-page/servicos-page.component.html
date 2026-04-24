@@ -1,1 +1,66 @@
-<p>servicos-page works!</p>
+<div class="page">
+
+  <!-- ===== HEADER (TOPO DA TELA) ===== -->
+  <header class="header">
+
+    <!-- Ícone do menu (placeholder por enquanto) -->
+    <div class="menu-icon">☰</div>
+
+    <!-- Logo da barbearia -->
+    <!-- Você pode trocar o src pela sua imagem -->
+    <div class="logo">
+      <img src="assets/icon-logo.png" alt="Logo da barbearia" />
+    </div>
+
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="content">
+
+    <!-- Título da tela -->
+    <h2 class="titulo">Escolha o serviço</h2>
+
+    <!-- Lista de serviços -->
+    <div class="lista-servicos">
+
+      <!-- Loop que percorre os serviços -->
+      <div
+        *ngFor="let servico of servicos"
+        class="card-servico"
+        (click)="selecionarServico(servico)"
+        [class.selecionado]="servicoSelecionado === servico"
+      >
+
+        <!-- Nome do serviço -->
+        <h3>{{ servico.nomeServico }}</h3>
+
+        <!-- Descrição -->
+        <p>{{ servico.descricaoServico }}</p>
+
+        <!-- Informações extras -->
+        <div class="info">
+          <span>R$ {{ servico.precoServico }}</span>
+          <span>⏱ {{ servico.duracaoMinutos }} min</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER (BOTÃO FIXO) ===== -->
+  <footer class="footer">
+
+    <!-- Botão "Próximo" -->
+    <button
+      class="btn-proximo"
+      [disabled]="!servicoSelecionado"
+      [class.ativo]="servicoSelecionado"
+    >
+      Próximo
+    </button>
+
+  </footer>
+
+</div>

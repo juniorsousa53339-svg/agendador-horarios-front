@@ -6,3 +6,13 @@ import { routes } from './app/app.routes';
 bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
+
+// ATIVAR HTTP NO ANGULAR
+import { provideHttpClient } from '@angular/common/http';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient()
+  ]
+});
