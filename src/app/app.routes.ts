@@ -5,6 +5,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 import { DataHorarioPageComponent } from './pages/cliente/data-horario/data-horario.component';
 import { ConfirmacaoPageComponent } from './features/cliente/pages/confirmacao-page/confirmacao-page.component';
+import { SucessoPageComponent } from './features/cliente/pages/sucesso-page/sucesso-page.component';
+
 
 export const routes: Routes = [
   {
@@ -35,5 +37,9 @@ export const routes: Routes = [
   {
     path: 'cliente/agendar/confirmacao',
     component: ConfirmacaoPageComponent
-  }
+  },
+  {
+  path: 'cliente/agendar/sucesso',
+  component: SucessoPageComponent
+}
 ];

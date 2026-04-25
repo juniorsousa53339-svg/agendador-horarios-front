@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirmacao-page',
@@ -15,6 +16,8 @@ export class ConfirmacaoPageComponent {
   telefone: string = '';
 
   erro: string | null = null;
+
+  constructor(private router: Router) {}
 
   confirmar() {
 
@@ -33,6 +36,9 @@ export class ConfirmacaoPageComponent {
       telefone: this.telefone
     });
 
-    // depois a gente navega ou mostra sucesso
+    // navega pra tela final
+    setTimeout(() => {
+      this.router.navigate(['/cliente/agendar/sucesso']);
+    }, 500);
   }
 }

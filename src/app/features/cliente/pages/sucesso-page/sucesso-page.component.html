@@ -1,0 +1,33 @@
+<div class="page">
+
+  <div class="content">
+
+    <!-- LOADING -->
+    <div *ngIf="carregando" class="loading">
+      <div class="spinner"></div>
+      <p>Confirmando seu agendamento...</p>
+    </div>
+
+    <!-- SUCESSO -->
+    <div *ngIf="!carregando" class="sucesso">
+
+      <div class="check">
+        ✓
+      </div>
+
+      <h2>Agendamento confirmado</h2>
+
+      <p>
+        Aguardamos você no estabelecimento.<br>
+        Chegue com alguns minutos de antecedência.
+      </p>
+
+      <button class="btn-sair" (click)="voltarInicio()">
+        Sair
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
