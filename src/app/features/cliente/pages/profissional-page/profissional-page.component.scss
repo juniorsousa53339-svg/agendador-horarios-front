@@ -10,26 +10,17 @@
 .header {
   display: flex;
   align-items: center;
-
-  justify-content: center; // centraliza tudo
-   position: relative; // permite posicionamento absoluto dos lados
+  justify-content: center;
+  position: relative;
 
   background: #1f2a44;
   color: white;
   padding: 12px 16px;
 }
 
-/* Ícone da esquerda */
-.menu-icon {
-  position: absolute;
-  left: 16px;
-}
-
-
-
-
+/* LOGO */
 .logo img {
-  height: 30px; // controla tamanho da sua imagem
+  height: 30px;
 }
 
 .logo {
@@ -39,35 +30,35 @@
 
 .content {
   flex: 1;
-  padding: 24px 16px; // mais espaço em cima
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; // mantém topo organizado
+  justify-content: flex-start;
 }
 
 .titulo {
   text-align: center;
   margin-bottom: 28px;
 
-  font-size: 28px; // maior
-  font-weight: 600; // destaque
+  font-size: 28px;
+  font-weight: 600;
 }
 
 
 .lista-servicos {
   display: flex;
   flex-direction: column;
-  gap: 18px; // espaçamento entre cards
+  gap: 18px;
 }
 
 
 .card-servico {
-  background: #1f2a44;
+  background: #1f2a44; // mesma cor padrão
   color: white;
   padding: 18px;
   border-radius: 12px;
 
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
@@ -77,7 +68,7 @@
   }
 
   h3 {
-    font-size: 20px; // título do serviço
+    font-size: 20px;
     font-weight: 500;
     margin-bottom: 6px;
   }
@@ -87,21 +78,12 @@
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
   }
-
-  .info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-
-    font-size: 13px;
-    opacity: 0.9;
-  }
 }
 
-/* ================= CARD SELECIONADO ================= */
+/*   CARD SELECIONADO  */
 .selecionado {
-  border: 2px solid #4cafef; // destaque
-  transform: scale(1.02); // leve aumento
+  border: 2px solid #4cafef;
+  transform: scale(1.02);
 }
 
 
@@ -112,6 +94,7 @@
 }
 
 
+/* ================= BOTÃO BASE ================= */
 .btn-proximo {
   width: 100%;
   padding: 14px;
@@ -129,12 +112,12 @@
   transform: translateY(0); // posição inicial
 }
 
-
+/* ================= BOTÃO ATIVO ================= */
 .btn-proximo.ativo {
   background: #1f2a44;
 
   /* leve subida */
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 
   /* sombra elegante */
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicoService } from '../../services/servico.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servicos-page',
@@ -13,7 +14,8 @@ export class ServicosPageComponent implements OnInit {
 
   servicos: any[] = [];
 
-  constructor(private servicoService: ServicoService) { }
+  constructor(private servicoService: ServicoService,private router: Router) { }
+
 
   ngOnInit() {
     this.servicoService.listar().subscribe({
@@ -33,6 +35,13 @@ export class ServicosPageComponent implements OnInit {
   selecionarServico(servico: any) {
     this.servicoSelecionado = servico;
   }
+  
+// Função Para ir pra tela C2
+  irParaProfissional() {
+  if (this.servicoSelecionado) {
+    this.router.navigate(['/cliente/agendar/profissional']);
+  }
+}
 }
 
 

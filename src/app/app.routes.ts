@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ServicosPageComponent } from './features/cliente/pages/servicos-page/servicos-page.component';
+import { ProfissionalPageComponent } from './features/cliente/pages/profissional-page/profissional-page.component';
 import { authGuard } from './core/guards/auth.guard';
 import { roleGuard } from './core/guards/role.guard';
 
@@ -11,12 +12,18 @@ export const routes: Routes = [
   },
   {
     path: 'cliente/agendar/servicos',
-    component: ServicosPageComponent
+    component: ServicosPageComponent,
+    data: { animation: 'servicos' }
   },
   {
     path: 'proprietario/dashboard',
     component: ServicosPageComponent, // só teste por enquanto
     canActivate: [authGuard, roleGuard],
     data: { role: 'ROLE_PROPRIETARIO' }
-  }
+  },
+{
+  path: 'cliente/agendar/profissional',
+  component: ProfissionalPageComponent,
+  data: { animation: 'servicos' }
+}
 ];

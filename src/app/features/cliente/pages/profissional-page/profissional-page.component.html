@@ -1,0 +1,41 @@
+<div class="page">
+
+  <header class="header">
+    <div class="logo">
+      <img src="assets/icon-logo.png" alt="Logo da barbearia" />
+    </div>
+  </header>
+
+  <main class="content">
+
+    <h2 class="titulo">Escolher profissional</h2>
+
+    <div class="lista-servicos">
+
+      <!-- Loop para renderizar os profissionais -->
+      <div
+        *ngFor="let prof of profissionais"
+        class="card-servico"
+        (click)="selecionarProfissional(prof)"
+        [class.selecionado]="profissionalSelecionado === prof"
+      >
+        <h3>{{ prof.nome }}</h3>
+        <p>{{ prof.especialidade }}</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- BOTÃO DE AÇÃO -->
+  <footer class="footer">
+    <button
+      class="btn-proximo"
+      [disabled]="!profissionalSelecionado"
+      [class.ativo]="profissionalSelecionado"
+    >
+      Próximo
+    </button>
+  </footer>
+
+</div>
