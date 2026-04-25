@@ -1,0 +1,78 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* ================= BOLINHAS ================= */
+.dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* ================= TRANSIÇÃO BRANCA ================= */
+
+.transition {
+  position: absolute;
+  inset: 0;
+
+  background: #f2f2f2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* efeito de expansão do centro */
+  animation: expand 0.8s ease forwards;
+}
+
+@keyframes expand {
+  0% {
+    clip-path: circle(0% at center);
+  }
+  100% {
+    clip-path: circle(150% at center);
+  }
+}
+
+/* ================= LOGO ================= */
+
+.logo img {
+  width: 120px;
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  animation: logoEnter 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+@keyframes logoEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

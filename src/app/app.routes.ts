@@ -6,14 +6,13 @@ import { roleGuard } from './core/guards/role.guard';
 import { DataHorarioPageComponent } from './pages/cliente/data-horario/data-horario.component';
 import { ConfirmacaoPageComponent } from './features/cliente/pages/confirmacao-page/confirmacao-page.component';
 import { SucessoPageComponent } from './features/cliente/pages/sucesso-page/sucesso-page.component';
-
+import { SplashScreenComponent } from './core/splash/splash-screen/splash-screen.component';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'cliente/agendar/servicos',
-    pathMatch: 'full'
-  },
+  path: '',
+  component: SplashScreenComponent
+},
   {
     path: 'cliente/agendar/servicos',
     component: ServicosPageComponent,
@@ -41,5 +40,6 @@ export const routes: Routes = [
   {
   path: 'cliente/agendar/sucesso',
   component: SucessoPageComponent
-}
+},
+
 ];
