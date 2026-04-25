@@ -30,12 +30,12 @@
   <!-- BOTÃO DE AÇÃO -->
   <footer class="footer">
     <button
-      class="btn-proximo"
-      [disabled]="!profissionalSelecionado"
-      [class.ativo]="profissionalSelecionado"
-    >
-      Próximo
-    </button>
+  class="btn-proximo"
+  [class.ativo]="profissionalSelecionado"
+  (click)="irParaDataHorario()"
+>
+  Próximo
+</button>
   </footer>
 
 </div>

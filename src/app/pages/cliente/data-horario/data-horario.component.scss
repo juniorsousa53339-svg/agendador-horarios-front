@@ -1,0 +1,179 @@
+/* ================= BASE ================= */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f4f6f9;
+}
+
+/* ================= HEADER ================= */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1f2a44;
+  padding: 14px;
+}
+
+.logo img {
+  height: 30px;
+}
+
+/* ================= CONTEÚDO ================= */
+.content {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: #1a1a1a;
+}
+
+/* ================= DATA ================= */
+.campo {
+  width: 100%;
+  max-width: 280px; // 👈 menor (como você pediu)
+  margin-bottom: 28px;
+}
+
+.campo label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* INPUT MINIMALISTA */
+.input-data {
+  width: 100%;
+  padding: 10px 12px; // 👈 menor altura
+  border-radius: 8px;
+
+  border: 1px solid #d1d5db; // 👈 borda leve (não preta)
+  background: white;
+  color: #1a1a1a;
+
+  font-size: 14px;
+
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: #1f2a44;
+    box-shadow: 0 0 0 2px rgba(31, 42, 68, 0.1);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+/* ================= HORÁRIOS ================= */
+.horarios {
+  width: 100%;
+  max-width: 320px;
+}
+
+.subtitulo {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.grid-horarios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* CARD */
+.horario {
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+
+  background: white;
+  color: #1a1a1a;
+
+  font-size: 13px;
+  cursor: pointer;
+
+  border: 1px solid #e5e7eb;
+
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: #1f2a44;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* SELECIONADO */
+.horario.selecionado {
+  background: #1f2a44;
+  color: white;
+  border-color: #1f2a44;
+}
+
+/* ================= ERRO ================= */
+.erro {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 20px;
+  padding: 12px;
+
+  background: #fee2e2;
+  color: #b91c1c;
+
+  border-radius: 8px;
+  max-width: 280px;
+
+  img {
+    width: 16px;
+  }
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top: auto;
+  padding: 16px;
+}
+
+/* BOTÃO */
+.btn-proximo {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+
+  font-size: 15px;
+
+  background: rgba(31, 42, 68, 0.3);
+  color: white;
+
+  transition: all 0.2s ease;
+}
+
+/* ATIVO */
+.btn-proximo.ativo {
+  background: #1f2a44;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
