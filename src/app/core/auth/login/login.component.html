@@ -1,0 +1,60 @@
+<div class="page">
+
+  <div class="container">
+
+    <!-- LOGO (IMAGEM) -->
+    <div class="logo">
+      <!-- 🔥 TROCAR AQUI -->
+      <img src="assets/LucDev barber (2).svg" alt="logo">
+    </div>
+
+    <!-- TEXTO -->
+    <p class="subtitle">Faça login em sua conta</p>
+
+    <!-- EMAIL -->
+    <div class="input-group">
+      <label>Endereço de email</label>
+
+      <div class="input-box">
+        <input
+          type="email"
+          placeholder="alex@email.com"
+          [(ngModel)]="email"
+        >
+
+        <div class="icon-box">
+          <img src="assets/icon-email.png">
+        </div>
+      </div>
+    </div>
+
+    <!-- SENHA -->
+    <div class="input-group">
+      <label>Senha</label>
+
+      <div class="input-box">
+        <input
+          type="password"
+          placeholder="Digite sua senha"
+          [(ngModel)]="senha"
+        >
+
+        <div class="icon-box">
+          <img src="assets/icon-senha.png">
+        </div>
+      </div>
+    </div>
+
+    <!-- ERRO -->
+    <div class="erro">
+      {{ erro }}
+    </div>
+
+    <!-- BOTÃO -->
+    <button (click)="login()">
+      Faça login agora
+    </button>
+
+  </div>
+
+</div>

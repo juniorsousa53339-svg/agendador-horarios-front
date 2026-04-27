@@ -7,6 +7,7 @@ import { DataHorarioPageComponent } from './pages/cliente/data-horario/data-hora
 import { ConfirmacaoPageComponent } from './features/cliente/pages/confirmacao-page/confirmacao-page.component';
 import { SucessoPageComponent } from './features/cliente/pages/sucesso-page/sucesso-page.component';
 import { SplashScreenComponent } from './core/splash/splash-screen/splash-screen.component';
+import { LoginComponent } from './core/auth/login/login.component';
 
 export const routes: Routes = [
   {
@@ -41,5 +42,9 @@ export const routes: Routes = [
   path: 'cliente/agendar/sucesso',
   component: SucessoPageComponent
 },
-
+    // PARTE DE (---FUNCIONARIO && PROPRIETARIO----)
+  {
+  path: 'login',
+  component: LoginComponent
+}
 ];
