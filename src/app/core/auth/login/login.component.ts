@@ -23,28 +23,59 @@ export class LoginComponent {
 
   login() {
 
-    //  VALIDAÇÃO FRONT (ANTES DE IR PRO BACKEND)
-    // Aqui você evita requisição desnecessária
-    if (!this.email || !this.senha) {
-      this.erro = 'Preencha todos os campos';
-      return;
-    }
-
-    this.erro = null;
-
-    // AQUI VAI SER SUBSTITUÍDO PELO BACKEND
-    // No futuro você vai chamar um serviço tipo:
-    // this.authService.login(this.email, this.senha).subscribe(...)
-
-    //  MOCK TEMPORÁRIO (simulação)
-    const tipo = 'FUNCIONARIO';
-
-    //  AQUI VAI CONTINUAR EXISTINDO (mesmo com backend)
-    // Só que o "tipo" vai vir da API
-    if (tipo === 'FUNCIONARIO') {
-      this.router.navigate(['/funcionario/agenda']);
-    } else {
-      this.router.navigate(['/proprietario/dashboard']);
-    }
+  // ==========================
+  // VALIDAÇÃO BÁSICA
+  // ==========================
+  if (!this.email || !this.senha) {
+    this.erro = 'Preencha todos os campos';
+    return;
   }
+
+  this.erro = null;
+
+  // ==========================
+  // MOCK DE USUÁRIOS (SIMULANDO BACKEND)
+  // ==========================
+  const usuariosMock = [
+    {
+      email: 'proprietario@alfatech.com',
+      senha: '123456',
+      role: 'PROPRIETARIO'
+    },
+    {
+      email: 'funcionario@alfatech.com',
+      senha: '123456',
+      role: 'FUNCIONARIO'
+    }
+  ];
+
+  // ==========================
+  // VERIFICA LOGIN
+  // ==========================
+  const usuarioEncontrado = usuariosMock.find(
+    u => u.email === this.email && u.senha === this.senha
+  );
+
+  // ==========================
+  // LOGIN INVÁLIDO
+  // ==========================
+  if (!usuarioEncontrado) {
+    this.erro = 'Email ou senha inválidos';
+    return;
+  }
+
+  // ==========================
+  // REDIRECIONAMENTO POR ROLE
+  // ==========================
+  if (usuarioEncontrado.role === 'FUNCIONARIO') {
+
+    // funcionário → agenda dele
+    this.router.navigate(['/funcionario/agenda']);
+
+  } else if (usuarioEncontrado.role === 'PROPRIETARIO') {
+
+    // proprietário → dashboard admin
+   this.router.navigateByUrl('/proprietario/dashboard');
+  }
+}
 }

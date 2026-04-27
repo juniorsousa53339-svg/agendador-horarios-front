@@ -16,6 +16,9 @@ import { roleGuard } from './core/guards/role.guard';
 // ===== FUNCIONÁRIO =====
 import { AgendaFuncionarioComponent } from './features/funcionario/pages/agenda/agenda.component';
 
+// ===== PROPRIETARIO =====
+import { DashboardComponent } from './features/proprietario/pages/dashboard/dashboard.component';
+
 export const routes: Routes = [
 
   // ===== SPLASH =====
@@ -63,11 +66,11 @@ export const routes: Routes = [
 
   // ===== PROPRIETÁRIO =====
   {
-    path: 'proprietario/dashboard',
-    component: ServicosPageComponent, // 🔥 depois trocar por dashboard real
-    canActivate: [authGuard, roleGuard],
-    data: { role: 'ROLE_PROPRIETARIO' }
-  },
+  path: 'proprietario/dashboard',
+  component: DashboardComponent, 
+  // canActivate: [authGuard, roleGuard],
+  data: { role: 'ROLE_PROPRIETARIO' }
+},
 
   // ===== REDIRECIONAMENTO FINAL =====
   {

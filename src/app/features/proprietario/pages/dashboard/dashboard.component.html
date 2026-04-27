@@ -1,0 +1,56 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <button class="menu-btn" (click)="toggleMenu()">☰</button>
+    <span class="titulo">Dashboard</span>
+  </div>
+
+  <!-- MENU LATERAL -->
+  <div class="sidebar" [class.ativo]="menuAberto">
+    <div class="menu-item">Agendamentos</div>
+    <div class="menu-item">Serviços</div>
+    <div class="menu-item">Funcionários</div>
+    <div class="menu-item">Configurações</div>
+  </div>
+
+  <!-- OVERLAY (IMPORTANTE) -->
+  <div
+    class="overlay"
+    [class.ativo]="menuAberto"
+    (click)="fecharMenu()">
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards">
+
+    <div class="card agendamento">
+      <div class="icon-box">
+        <img src="assets/CalendarOutline.png">
+      </div>
+
+      <h2>{{ totalAgendamentos }}</h2>
+      <p>Agendamentos hoje</p>
+    </div>
+
+    <div class="card servicos">
+      <div class="icon-box">
+        <img src="assets/icon-tesoura.png">
+      </div>
+
+      <h2>{{ totalServicos }}</h2>
+      <p>Serviços ativos</p>
+    </div>
+
+    <div class="card funcionarios">
+      <div class="icon-box">
+        <img src="assets/icon-funcionarios.png">
+      </div>
+
+      <h2>{{ totalFuncionarios }}</h2>
+      <p>Funcionários</p>
+    </div>
+
+  </div>
+
+</div>
