@@ -13,10 +13,17 @@ import { trigger, transition, style, animate } from '@angular/animations';
   `,
   animations: [
     trigger('fade', [
-      transition('* => *', [
-        style({ opacity: 0 }),
-        animate('200ms ease-in', style({ opacity: 1 }))
+
+      // 🔥 animação melhorada (fade + leve movimento)
+      transition('* <=> *', [
+        style({ opacity: 0, transform: 'translateY(10px)' }),
+
+        animate(
+          '250ms ease-out',
+          style({ opacity: 1, transform: 'translateY(0)' })
+        )
       ])
+
     ])
   ]
 })
@@ -24,7 +31,6 @@ export class AppComponent {
 
   animationState = 0;
 
-  // toda vez que muda de rota, força a animação
   onActivate() {
     this.animationState++;
   }

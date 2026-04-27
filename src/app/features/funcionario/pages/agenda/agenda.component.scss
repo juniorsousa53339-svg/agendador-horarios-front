@@ -1,0 +1,205 @@
+$cor-primaria: #1f2a44;
+$cor-secundaria: #2e3b5f;
+$cor-fundo: #f4f6f9;
+$cor-card: #ffffff;
+$cor-texto: #1a1a1a;
+$cor-texto-suave: #6b7280;
+$cor-destaque: #4f7cff;
+
+.page {
+  min-height: 100vh;
+  background: $cor-fundo;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 30px;
+  color: $cor-texto;
+
+
+}
+
+.header p {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.header span {
+  font-size: 13px;
+  color: $cor-texto-suave;
+}
+
+/* DIAS */
+.dias-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 90px;
+}
+
+.nav {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: $cor-primaria;
+  color: white;
+
+}
+
+.dias {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.dia {
+  min-width: 60px;
+  padding: 10px;
+  border-radius: 12px;
+  background: $cor-card;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dia small {
+  font-size: 11px;
+  color: $cor-texto-suave;
+}
+
+.dia strong {
+  display: block;
+  font-size: 15px;
+}
+
+.dia.ativo {
+  background: $cor-primaria;
+  color: white;
+}
+
+/* LISTA */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  display: flex;
+  align-items: center;
+  background: $cor-card;
+  border-radius: 14px;
+  overflow: hidden;
+
+  padding: -6px 0;
+
+
+
+}
+
+/* HORA */
+.hora {
+  width: 70px;
+  height: 130px;
+  border-radius: 4px;
+  background: $cor-secundaria;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $cor-card;
+  font-weight: bold;
+}
+
+/* INFO */
+.info {
+  flex: 1;
+  padding: 15px;
+}
+
+.info h3 {
+  font-size: 25px;
+}
+
+.info p {
+  font-size: 12px;
+  color: $cor-texto-suave;
+  margin-top: -30px;
+}
+
+/* STATUS */
+.status {
+  margin-right: 10px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.status.confirmado {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.agendado {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.status.cancelado {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: auto;
+   padding-top: 20px;
+}
+
+.btn-sair {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background: $cor-primaria;
+  color: white;
+
+  font-family: 'Poppins', sans-serif; // 🔥 adiciona
+  font-weight: 300; // 🔥 Poppins Light
+
+  cursor: pointer;
+}
+
+.card {
+  transition: 0.2s;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+.btn-sair {
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn-sair:hover {
+  transform: translateY(-2px); // leve subida
+}
+
+.btn-sair:active {
+  transform: scale(0.96); // 🔥 efeito de pressionar
+}

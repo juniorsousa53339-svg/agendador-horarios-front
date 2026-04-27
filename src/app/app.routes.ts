@@ -1,34 +1,44 @@
 import { Routes } from '@angular/router';
+
+// ===== CLIENTE =====
 import { ServicosPageComponent } from './features/cliente/pages/servicos-page/servicos-page.component';
 import { ProfissionalPageComponent } from './features/cliente/pages/profissional-page/profissional-page.component';
-import { authGuard } from './core/guards/auth.guard';
-import { roleGuard } from './core/guards/role.guard';
-import { DataHorarioPageComponent } from './pages/cliente/data-horario/data-horario.component';
+import { DataHorarioPageComponent } from './features/cliente/pages/data-horario/data-horario.component';
 import { ConfirmacaoPageComponent } from './features/cliente/pages/confirmacao-page/confirmacao-page.component';
 import { SucessoPageComponent } from './features/cliente/pages/sucesso-page/sucesso-page.component';
+
+// ===== CORE =====
 import { SplashScreenComponent } from './core/splash/splash-screen/splash-screen.component';
 import { LoginComponent } from './core/auth/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
+
+// ===== FUNCIONÁRIO =====
+import { AgendaFuncionarioComponent } from './features/funcionario/pages/agenda/agenda.component';
 
 export const routes: Routes = [
+
+  // ===== SPLASH =====
   {
-  path: '',
-  component: SplashScreenComponent
-},
+    path: '',
+    component: SplashScreenComponent,
+    pathMatch: 'full'
+  },
+
+  // ===== LOGIN =====
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+
+  // ===== CLIENTE =====
   {
     path: 'cliente/agendar/servicos',
-    component: ServicosPageComponent,
-    data: { animation: 'servicos' }
-  },
-  {
-    path: 'proprietario/dashboard',
-    component: ServicosPageComponent, // só teste por enquanto
-    canActivate: [authGuard, roleGuard],
-    data: { role: 'ROLE_PROPRIETARIO' }
+    component: ServicosPageComponent
   },
   {
     path: 'cliente/agendar/profissional',
-    component: ProfissionalPageComponent,
-    data: { animation: 'servicos' }
+    component: ProfissionalPageComponent
   },
   {
     path: 'cliente/agendar/data-horario',
@@ -39,12 +49,29 @@ export const routes: Routes = [
     component: ConfirmacaoPageComponent
   },
   {
-  path: 'cliente/agendar/sucesso',
-  component: SucessoPageComponent
-},
-    // PARTE DE (---FUNCIONARIO && PROPRIETARIO----)
+    path: 'cliente/agendar/sucesso',
+    component: SucessoPageComponent
+  },
+
+  // ===== FUNCIONÁRIO =====
   {
-  path: 'login',
-  component: LoginComponent
+    path: 'funcionario/agenda',
+    component: AgendaFuncionarioComponent,
+     //canActivate: [authGuard, roleGuard],
+     //data: { role: 'ROLE_FUNCIONARIO' }
+  },
+
+  // ===== PROPRIETÁRIO =====
+  {
+    path: 'proprietario/dashboard',
+    component: ServicosPageComponent, // 🔥 depois trocar por dashboard real
+    canActivate: [authGuard, roleGuard],
+    data: { role: 'ROLE_PROPRIETARIO' }
+  },
+
+  // ===== REDIRECIONAMENTO FINAL =====
+  {
+  path: '**',
+  redirectTo: 'cliente/agendar/servicos'
 }
 ];

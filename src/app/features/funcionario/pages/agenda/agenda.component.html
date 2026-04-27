@@ -1,0 +1,62 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Minha Agenda</h1>
+    <p>Olá, {{ nomeFuncionario }} 👋</p>
+    <span>Veja seus horários do dia</span>
+  </div>
+
+  <!-- SELETOR DE DIAS -->
+  <div class="dias-wrapper">
+
+    <button class="nav" (click)="voltarSemana()">‹</button>
+
+    <div class="dias">
+      <div
+        class="dia"
+        *ngFor="let dia of diasSemana"
+        [class.ativo]="diaSelecionado === dia"
+        (click)="selecionarDia(dia)"
+      >
+        <small>{{ dia.nome }}</small>
+        <strong>{{ dia.numero }}</strong>
+      </div>
+    </div>
+
+    <button class="nav" (click)="proximaSemana()">›</button>
+
+  </div>
+
+  <!-- LISTA -->
+  <div class="lista">
+
+    <!-- 🔥 BACKEND VAI VIR AQUI -->
+    <div class="card" *ngFor="let ag of agendamentos">
+
+      <!-- HORA -->
+      <div class="hora">
+        {{ ag.hora }}
+      </div>
+
+      <!-- INFO -->
+      <div class="info">
+        <h3>{{ ag.nome }}</h3>
+        <p>{{ ag.servico }}</p>
+      </div>
+
+      <!-- STATUS -->
+      <div class="status" [ngClass]="ag.status">
+        {{ ag.status }}
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <button class="btn-sair">Sair</button>
+  </div>
+
+</div>
