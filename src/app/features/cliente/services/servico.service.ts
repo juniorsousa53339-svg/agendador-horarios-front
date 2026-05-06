@@ -15,7 +15,7 @@ export class ServicoService {
       {
         nomeServico: 'Corte de cabelo',
         descricaoServico: 'Corte moderno com acabamento profissional',
-        precoServico: 30,
+        precoServico: 50,
         duracaoMinutos: 30
       },
       {

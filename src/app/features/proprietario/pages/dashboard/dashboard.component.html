@@ -8,11 +8,23 @@
 
   <!-- MENU LATERAL -->
   <div class="sidebar" [class.ativo]="menuAberto">
-    <div class="menu-item">Agendamentos</div>
-    <div class="menu-item">Serviços</div>
-    <div class="menu-item">Funcionários</div>
-    <div class="menu-item">Configurações</div>
-  </div>
+
+   <div class="menu-item" (click)="irAgendamentos(); fecharMenu()">
+  Agendamentos
+</div>
+
+<div class="menu-item" (click)="irServicos(); fecharMenu()">
+  Serviços
+</div>
+
+<div class="menu-item" (click)="irFuncionarios(); fecharMenu()">
+  Funcionários
+</div>
+
+<div class="menu-item" (click)="irConfiguracoes(); fecharMenu()">
+  Configurações
+</div>
+</div>
 
   <!-- OVERLAY (IMPORTANTE) -->
   <div

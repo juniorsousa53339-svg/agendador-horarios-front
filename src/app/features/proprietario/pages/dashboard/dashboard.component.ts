@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +16,9 @@ export class DashboardComponent {
   totalServicos = 5;
   totalFuncionarios = 3;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
-  ngOnInit() {
+
 
     //  FUTURO (BACKEND)
     /*
@@ -35,8 +36,8 @@ export class DashboardComponent {
 
 
 
-  }
-  ngOnIniti() {
+  
+  ngOnInit() {
     console.log('DASHBOARD DO PROPRIETÁRIO ABRIU');
   }
 
@@ -49,4 +50,20 @@ toggleMenu() {
 fecharMenu() {
   this.menuAberto = false;
 }
+irAgendamentos() {
+  this.router.navigate(['/funcionario/agenda']);
+}
+
+irServicos() {
+  this.router.navigate(['/cliente/agendar/servicos']);
+}
+
+irFuncionarios() {
+  this.router.navigate(['/proprietario/funcionarios']);
+}
+
+irConfiguracoes() {
+  this.router.navigate(['/configuracoes']);
+}
+
 }

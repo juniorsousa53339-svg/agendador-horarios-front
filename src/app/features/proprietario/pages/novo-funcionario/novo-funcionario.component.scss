@@ -1,0 +1,73 @@
+$cor-primaria: #1f2a44;
+$cor-fundo: #f4f6f9;
+$cor-card: #ffffff;
+$cor-texto: #1a1a1a;
+$cor-texto-suave: #6b7280;
+
+.page {
+  min-height: 100vh;
+  background: $cor-fundo;
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 20px;
+}
+
+.back-btn {
+  border: none;
+  background: none;
+  font-size: 18px;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* INPUT */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 13px;
+  color: $cor-texto-suave;
+}
+
+.input-group input {
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  padding: 0 12px;
+  background: $cor-card;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* BOTÃO */
+.btn-salvar {
+  margin-top: 20px;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  background: $cor-primaria;
+  color: white;
+
+  transition: 0.2s;
+}
+
+.btn-salvar:active {
+  transform: scale(0.97);
+}

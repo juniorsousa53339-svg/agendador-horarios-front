@@ -1,0 +1,116 @@
+$cor-primaria: #1f2a44;
+$cor-secundaria: #2e3b5f;
+$cor-fundo: #f4f6f9;
+$cor-card: #ffffff;
+$cor-texto: #1a1a1a;
+$cor-texto-suave: #6b7280;
+$cor-destaque: #4f7cff;
+
+.page {
+  min-height: 100vh;
+  background: $cor-fundo;
+  padding: 20px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: $cor-primaria;
+  color: white;
+}
+
+.header h1 {
+  font-size: 22px;
+  color: $cor-texto;
+}
+
+/* BOTÃO NOVO */
+.btn-novo {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: $cor-destaque;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* LISTA */
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: $cor-card;
+  border-radius: 16px;
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+  transition: 0.2s;
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+/* INFO */
+.info h3 {
+  font-size: 18px;
+  color: $cor-texto;
+}
+
+.info p {
+  font-size: 14px;
+  color: $cor-texto-suave;
+}
+
+.info span {
+  font-size: 12px;
+  color: $cor-destaque;
+}
+
+/* AÇÕES */
+.acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-acao {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: $cor-fundo;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-acao img {
+  width: 18px;
+}
+
+/* CLICK BONITO */
+.btn-acao:active {
+  transform: scale(0.9);
+}

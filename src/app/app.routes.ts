@@ -18,6 +18,9 @@ import { AgendaFuncionarioComponent } from './features/funcionario/pages/agenda/
 
 // ===== PROPRIETARIO =====
 import { DashboardComponent } from './features/proprietario/pages/dashboard/dashboard.component';
+import { FuncionariosComponent } from './features/proprietario/pages/funcionarios/funcionarios.component';
+import { NovoFuncionarioComponent } from './features/proprietario/pages/novo-funcionario/novo-funcionario.component';
+
 
 export const routes: Routes = [
 
@@ -67,9 +70,19 @@ export const routes: Routes = [
   // ===== PROPRIETÁRIO =====
   {
   path: 'proprietario/dashboard',
-  component: DashboardComponent, 
+  component: DashboardComponent,
   // canActivate: [authGuard, roleGuard],
   data: { role: 'ROLE_PROPRIETARIO' }
+},
+
+{
+  path: 'proprietario/funcionarios',
+  component: FuncionariosComponent
+},
+
+{
+  path: 'proprietario/funcionarios/novo',
+  component: NovoFuncionarioComponent
 },
 
   // ===== REDIRECIONAMENTO FINAL =====
@@ -77,4 +90,5 @@ export const routes: Routes = [
   path: '**',
   redirectTo: 'cliente/agendar/servicos'
 }
+
 ];
