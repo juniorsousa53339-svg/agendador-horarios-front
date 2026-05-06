@@ -15,7 +15,9 @@ export class EditarFuncionarioComponent {
   funcionario: any = {
     nome: '',
     telefone: '',
-    especialidade: ''
+    especialidade: '',
+    email: '',
+    senha: '',
   };
 
   constructor(
@@ -34,7 +36,9 @@ export class EditarFuncionarioComponent {
     this.funcionario = {
       nome: 'João Silva',
       telefone: '(11) 99999-9999',
-      especialidade: 'Corte Masculino'
+      especialidade: 'Corte Masculino',
+      email: 'joao123@gmail.com',
+      senha: '12345678'
     };
 
     //  FUTURO BACKEND

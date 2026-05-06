@@ -18,7 +18,9 @@ export class NovoFuncionarioComponent {
   form = {
     nome: '',
     telefone: '',
-    especialidade: ''
+    especialidade: '',
+    Email: '',
+    Senha:'',
   };
 
   voltar() {

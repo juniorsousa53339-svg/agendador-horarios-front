@@ -24,6 +24,16 @@
       <input type="text" [(ngModel)]="funcionario.especialidade">
     </div>
 
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="funcionario.email">
+    </div>
+
+    <div class="input-group">
+      <label>Senha</label>
+      <input type="password" [(ngModel)]="funcionario.senha">
+    </div>
+
     <!-- BOTÃO -->
     <button class="btn-salvar" (click)="salvar()">
       Salvar alterações

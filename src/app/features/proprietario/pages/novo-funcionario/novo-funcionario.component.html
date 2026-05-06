@@ -27,6 +27,16 @@
       <input type="text" [(ngModel)]="form.especialidade" placeholder="Corte Masculino">
     </div>
 
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="form.Email" placeholder="LucDev@gmail.com">
+    </div>
+
+    <div class="input-group">
+      <label>Senha</label>
+      <input type="password" [(ngModel)]="form.Senha" placeholder="@1234">
+    </div>
+
     <!-- BOTÃO -->
     <button class="btn-salvar" (click)="salvar()">
       Salvar Funcionário
