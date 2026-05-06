@@ -1,0 +1,34 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <button (click)="voltar()">←</button>
+    <h1>Editar Funcionário</h1>
+  </div>
+
+  <!-- FORM -->
+  <div class="form">
+
+    <div class="input-group">
+      <label>Nome</label>
+      <input type="text" [(ngModel)]="funcionario.nome">
+    </div>
+
+    <div class="input-group">
+      <label>Telefone</label>
+      <input type="text" [(ngModel)]="funcionario.telefone">
+    </div>
+
+    <div class="input-group">
+      <label>Especialidade</label>
+      <input type="text" [(ngModel)]="funcionario.especialidade">
+    </div>
+
+    <!-- BOTÃO -->
+    <button class="btn-salvar" (click)="salvar()">
+      Salvar alterações
+    </button>
+
+  </div>
+
+</div>

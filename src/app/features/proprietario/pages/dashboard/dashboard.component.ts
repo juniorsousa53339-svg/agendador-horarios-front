@@ -36,7 +36,7 @@ export class DashboardComponent {
 
 
 
-  
+
   ngOnInit() {
     console.log('DASHBOARD DO PROPRIETÁRIO ABRIU');
   }
@@ -55,7 +55,7 @@ irAgendamentos() {
 }
 
 irServicos() {
-  this.router.navigate(['/cliente/agendar/servicos']);
+  this.router.navigate(['/proprietario/servicos']);
 }
 
 irFuncionarios() {

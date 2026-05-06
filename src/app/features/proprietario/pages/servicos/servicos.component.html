@@ -1,0 +1,41 @@
+<div class="page">
+
+  <div class="header">
+    
+    <button class="back-btn" (click)="voltar()">←</button>
+    <h1>Serviços</h1>
+  </div>
+
+  <button class="btn-novo" (click)="novoServico()">
+    + Novo Serviço
+  </button>
+
+  <div class="lista">
+
+    <div class="card" *ngFor="let s of servicos">
+
+      <div class="info">
+        <h3>{{ s.nome }}</h3>
+        <p>Duração: {{ s.duracao }}</p>
+        <span>R$ {{ s.preco }}</span>
+      </div>
+
+      <div class="acoes">
+
+
+        <button class="btn-acao" (click)="editar(s)">
+          <img src="assets/icon-lapis.png">
+        </button>
+
+
+        <button class="btn-acao" (click)="excluir(s)">
+          <img src="assets/icon-lixeira.png">
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

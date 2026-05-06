@@ -1,0 +1,28 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <button class="back-btn" (click)="voltar()">←</button>
+    <h1>Editar Serviço</h1>
+  </div>
+
+  <!-- FORM -->
+  <div class="form">
+
+    <label>Nome do serviço</label>
+    <input type="text" [(ngModel)]="servico.nome">
+
+    <label>Duração</label>
+    <input type="text" [(ngModel)]="servico.duracao">
+
+    <label>Preço</label>
+    <input type="number" [(ngModel)]="servico.preco">
+
+  </div>
+
+  <!-- BOTÃO -->
+  <button class="btn-salvar" (click)="salvar()">
+    Salvar Alterações
+  </button>
+
+</div>

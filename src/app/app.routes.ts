@@ -20,6 +20,10 @@ import { AgendaFuncionarioComponent } from './features/funcionario/pages/agenda/
 import { DashboardComponent } from './features/proprietario/pages/dashboard/dashboard.component';
 import { FuncionariosComponent } from './features/proprietario/pages/funcionarios/funcionarios.component';
 import { NovoFuncionarioComponent } from './features/proprietario/pages/novo-funcionario/novo-funcionario.component';
+import { EditarFuncionarioComponent } from './features/proprietario/pages/editar-funcionario/editar-funcionario.component';
+import { ServicosComponent } from './features/proprietario/pages/servicos/servicos.component';
+import { NovoServicoComponent } from './features/proprietario/pages/novo-servico/novo-servico.component';
+import { EditarServicoComponent } from './features/proprietario/pages/editar-servico/editar-servico.component';
 
 
 export const routes: Routes = [
@@ -83,6 +87,30 @@ export const routes: Routes = [
 {
   path: 'proprietario/funcionarios/novo',
   component: NovoFuncionarioComponent
+},
+
+{
+  path: 'proprietario/funcionarios/editar/:id',
+  loadComponent: () =>
+    import('./features/proprietario/pages/editar-funcionario/editar-funcionario.component')
+      .then(m => m.EditarFuncionarioComponent)
+},
+
+{
+  path: 'proprietario/servicos',
+  component: ServicosComponent
+},
+
+// NOVO
+{
+  path: 'proprietario/servicos/novo',
+  component: NovoServicoComponent
+},
+
+// EDITAR
+{
+  path: 'proprietario/servicos/editar/:id',
+  component: EditarServicoComponent
 },
 
   // ===== REDIRECIONAMENTO FINAL =====

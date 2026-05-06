@@ -18,6 +18,7 @@ export class FuncionariosComponent {
   funcionarios = [
 
     {
+      id: 1,
     nome: 'joão silva',
     especialidade: 'corte Masculino',
     telefone: '(11) 99999-9999'
@@ -25,6 +26,7 @@ export class FuncionariosComponent {
     },
 
      {
+      id: 2,
     nome: 'Marcos',
     especialidade: 'corte Masculino',
     telefone: '(11) 94929-0909'
@@ -32,6 +34,7 @@ export class FuncionariosComponent {
     },
 
      {
+      id: 3,
     nome: 'Ronaldo',
     especialidade: 'corte + barba',
     telefone: '(11) 94309-1589'
@@ -54,18 +57,38 @@ export class FuncionariosComponent {
 
   // ================= EDITAR
   editar(funcionario: any) {
-    console.log('Editar:', funcionario);
+  console.log('Clicou em editar', funcionario);
+
+  this.router.navigate(['/proprietario/funcionarios/editar/:id']);
+
 
     //  FUTURO BACKEND:
     // this.router.navigate(['/proprietario/funcionarios/editar', funcionario.id]);
   }
 
-  // ================= EXCLUIR
   excluir(funcionario: any) {
-    console.log('Excluir:', funcionario);
 
-    //  FUTURO BACKEND:
-    // aqui você vai chamar API pra deletar
-  }
+
+  const confirmar = confirm(`Deseja excluir ${funcionario.nome}?`);
+
+  if (!confirmar) return;
+
+
+  this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
+
+  console.log('Funcionário removido:', funcionario);
+
+  //  FUTURO BACKEND
+  /*
+  this.funcionarioService.excluir(funcionario.id).subscribe({
+    next: () => {
+      this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
+    },
+    error: (err) => {
+      console.error('Erro ao excluir', err);
+    }
+  });
+  */
+}
 
 }
