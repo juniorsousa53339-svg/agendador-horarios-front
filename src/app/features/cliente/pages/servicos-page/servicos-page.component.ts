@@ -1,7 +1,10 @@
+import { Servico } from './../../../../shared/models/servico.model';
 import { Component, OnInit } from '@angular/core';
-import { ServicoService } from '../../services/servico.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ServicoService } from '../../services/servico.service';
+
+
 
 @Component({
   selector: 'app-servicos-page',
@@ -12,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class ServicosPageComponent implements OnInit {
 
-  servicos: any[] = [];
+  servicos: Servico[] = [];
 
   constructor(private servicoService: ServicoService,private router: Router) { }
 
@@ -29,13 +32,13 @@ export class ServicosPageComponent implements OnInit {
   }
 
   // Representa o serviço selecionado (inicialmente nenhum)
-  servicoSelecionado: any = null;
+ servicoSelecionado: Servico | null = null;
 
   // Função chamada quando clicar no card
   selecionarServico(servico: any) {
     this.servicoSelecionado = servico;
   }
-  
+
 // Função Para ir pra tela C2
   irParaProfissional() {
   if (this.servicoSelecionado) {
