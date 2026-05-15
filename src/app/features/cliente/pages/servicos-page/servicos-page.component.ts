@@ -1,7 +1,9 @@
-import { Servico } from './../../../../shared/models/servico.model';
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { Servico } from './../../../../shared/models/servico.model';
 import { ServicoService } from '../../services/servico.service';
 
 

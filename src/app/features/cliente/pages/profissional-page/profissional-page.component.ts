@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { FuncionarioService } from './../../services/funcionario.service';
+import { Funcionario } from './../../../../shared/models/funcionario.model';
+import { ServicoService } from '../../services/servico.service';
+
 
 @Component({
   selector: 'app-profissional-page',
@@ -9,42 +14,32 @@ import { Router } from '@angular/router';
   templateUrl: './profissional-page.component.html',
   styleUrl: './profissional-page.component.scss'
 })
-export class ProfissionalPageComponent {
+export class ProfissionalPageComponent implements OnInit {
 
-   //  MOCK: simula dados vindos do backend (depois vira API)
-  profissionais = [
-  {
-    nome: 'Luciano Júnior',
-    especialidade: 'Corte masculino'
-  },
-  {
-    nome: 'Gabriel Souza',
-    especialidade: 'Barba'
-  },
-  {
-    nome: 'Marcos',
-    especialidade: 'Corte e barba'
+  Funcionarios: Funcionario[] = [];
+
+  constructor(private FuncionarioService: FuncionarioService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.FuncionarioService.listar().subscribe({
+      next: (data) => {
+        this.Funcionarios = data ;
+      },
+      error: (err) => {
+        console.error('Erro ao buscar funcionarios', err);
+      }
+    });
+  }  
+
+
+  profissionalSelecionado: Funcionario | null = null;
+
+  selecionarProfissional(profissional: any) {
+    this.profissionalSelecionado = profissional;
   }
-];
 
- //  guarda o profissional que o usuário clicou
-profissionalSelecionado: any = null;
-
-//  chamado quando o usuário clica em um card
-selecionarProfissional(profissional: any) {
-  this.profissionalSelecionado = profissional;
-}
-constructor(private router: Router) {}
-
-// chamada ao clicar no botão
-irParaDataHorario() {
-
-
-
-  // valida se escolheu alguém
-  if (!this.profissionalSelecionado) return;
-
-  // navega pra próxima tela
-  this.router.navigate(['/cliente/agendar/data-horario']);
-}
+  irParaDataHorario() {
+    if (!this.profissionalSelecionado) return;
+    this.router.navigate(['/cliente/agendar/data-horario']);
+  }
 }

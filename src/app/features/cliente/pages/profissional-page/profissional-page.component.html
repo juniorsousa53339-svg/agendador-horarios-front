@@ -14,12 +14,12 @@
 
       <!-- Loop para renderizar os profissionais -->
       <div
-        *ngFor="let prof of profissionais"
+        *ngFor="let prof of Funcionarios"
         class="card-servico"
         (click)="selecionarProfissional(prof)"
         [class.selecionado]="profissionalSelecionado === prof"
       >
-        <h3>{{ prof.nome }}</h3>
+        <h3>{{ prof.nomeFuncionario }}</h3>
         <p>{{ prof.especialidade }}</p>
       </div>
 
