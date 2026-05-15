@@ -1,8 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServicosService } from '../../../../core/services/servicos/servicos.service';
 
+// Interface/tipo do serviço
+interface Servico {
+  id: number;
+  nome: string;
+  duracao: string;
+  preco: number;
+}
 
 @Component({
   selector: 'app-servicos',
@@ -13,24 +19,35 @@ import { ServicosService } from '../../../../core/services/servicos/servicos.ser
 })
 export class ServicosComponent {
 
-  //  INJEÇÃO DO ROUTER (ESSENCIAL)
-  constructor(private router: Router) {}
-
-  //  MOCK DE SERVIÇOS
-  servicos = [
+  // ================= MOCK DOS SERVIÇOS =================
+  servicos: Servico[] = [
     {
       id: 1,
       nome: 'Corte Masculino',
-      duracao: '30 min',
-      preco: 30
+      duracao: '45 min',
+      preco: 45
     },
     {
       id: 2,
       nome: 'Barba',
+      duracao: '30 min',
+      preco: 30
+    },
+    {
+      id: 3,
+      nome: 'Combo Corte + Barba',
+      duracao: '1h 15min',
+      preco: 70
+    },
+    {
+      id: 4,
+      nome: 'Sobrancelha',
       duracao: '20 min',
       preco: 20
     }
   ];
+
+  constructor(private router: Router) {}
 
   // ================= NOVO =================
   novoServico() {
@@ -38,17 +55,16 @@ export class ServicosComponent {
   }
 
   // ================= EDITAR =================
-  editar(s: any) {
-    this.router.navigate(['/proprietario/servicos/editar', s.id]);
+  editar(servico: Servico) {
+    this.router.navigate([
+      '/proprietario/servicos/editar',
+      servico.id
+    ]);
   }
 
   // ================= EXCLUIR =================
-  excluir(servico: any) {
-
-    const confirmar = confirm(`Excluir ${servico.nome}?`);
-    if (!confirmar) return;
-
-    this.servicos = this.servicos.filter(s => s.id !== servico.id);
+  excluir(servico: Servico) {
+    console.log('Excluir serviço:', servico);
   }
 
   // ================= VOLTAR =================

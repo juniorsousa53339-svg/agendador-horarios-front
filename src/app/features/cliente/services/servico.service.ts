@@ -1,37 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Servico } from '../../../shared/models/servico.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicoService {
 
-  /**
-   * Simula resposta do backend com todos os campos importantes
-   */
-  listar(): Observable<any[]> {
+  private apiUrl = 'http://localhost:8080/servicos/listar';
 
-    const servicos = [
-      {
-        nomeServico: 'Corte de cabelo',
-        descricaoServico: 'Corte moderno com acabamento profissional',
-        precoServico: 50,
-        duracaoMinutos: 30
-      },
-      {
-        nomeServico: 'Barba',
-        descricaoServico: 'Modelagem completa da barba',
-        precoServico: 20,
-        duracaoMinutos: 20
-      },
-      {
-        nomeServico: 'Corte + Barba',
-        descricaoServico: 'Pacote completo com desconto',
-        precoServico: 45,
-        duracaoMinutos: 50
-      }
-    ];
+  constructor(private http: HttpClient) {}
 
-    return of(servicos);
+  listar(): Observable<Servico[]> {
+    return this.http.get<Servico[]>(this.apiUrl);
   }
 }
