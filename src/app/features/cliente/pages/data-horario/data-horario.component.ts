@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AgendamentoService } from '../../services/agendamento.service';
+
 
 @Component({
   selector: 'app-data-horario-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './data-horario.component.html',
   styleUrls: ['./data-horario.component.scss']
 })
@@ -24,6 +27,8 @@ export class DataHorarioPageComponent {
   // horário selecionado
   horarioSelecionado: string | null = null;
 
+dataSelecionada: string = '';
+
   // mensagem de erro (simulando backend)
   erro: string | null = null;
 
@@ -32,6 +37,10 @@ export class DataHorarioPageComponent {
 
     this.horarioSelecionado = h;
 
+    const dataHora = `${this.dataSelecionada}T${h}`;
+
+    this.agendamentoService.agendamento.dataHora = dataHora;
+
     // simulação de erro
     if (h === '10:00') {
       this.erro = 'Horário já reservado. Por favor, escolha outra opção disponível.';
@@ -39,7 +48,7 @@ export class DataHorarioPageComponent {
       this.erro = null;
     }
   }
-    constructor(private router: Router) {}
+    constructor(private router: Router, private agendamentoService: AgendamentoService) {}
     irParaConfirmacao() {
   this.router.navigate(['/cliente/agendar/confirmacao']);
 }

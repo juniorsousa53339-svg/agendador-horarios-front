@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import { FuncionarioService } from './../../services/funcionario.service';
 import { Funcionario } from './../../../../shared/models/funcionario.model';
-import { ServicoService } from '../../services/servico.service';
 
+import { AgendamentoService } from '../../services/agendamento.service';
 
 @Component({
   selector: 'app-profissional-page',
@@ -16,30 +16,43 @@ import { ServicoService } from '../../services/servico.service';
 })
 export class ProfissionalPageComponent implements OnInit {
 
-  Funcionarios: Funcionario[] = [];
+  funcionarios: Funcionario[] = [];
 
-  constructor(private FuncionarioService: FuncionarioService, private router: Router) { }
+  constructor(
+    private funcionarioService: FuncionarioService,
+    private agendamentoService: AgendamentoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.FuncionarioService.listar().subscribe({
-      next: (data) => {
-        this.Funcionarios = data ;
-      },
-      error: (err) => {
-        console.error('Erro ao buscar funcionarios', err);
-      }
-    });
-  }  
 
+    this.funcionarioService.listar().subscribe({
+
+      next: (data) => {
+        this.funcionarios = data;
+      },
+
+      error: (err) => {
+        console.error('Erro ao buscar funcionários', err);
+      }
+
+    });
+
+  }
 
   profissionalSelecionado: Funcionario | null = null;
 
-  selecionarProfissional(profissional: any) {
+  selecionarProfissional(profissional: Funcionario) {
+
     this.profissionalSelecionado = profissional;
+
+    this.agendamentoService.agendamento.funcionario = profissional;
   }
 
   irParaDataHorario() {
+
     if (!this.profissionalSelecionado) return;
+
     this.router.navigate(['/cliente/agendar/data-horario']);
   }
 }

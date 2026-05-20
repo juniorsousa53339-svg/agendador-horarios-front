@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { Servico } from './../../../../shared/models/servico.model';
 import { ServicoService } from '../../services/servico.service';
+import { AgendamentoService } from '../../services/agendamento.service';
 
 
 
@@ -19,7 +20,11 @@ export class ServicosPageComponent implements OnInit {
 
   servicos: Servico[] = [];
 
-  constructor(private servicoService: ServicoService,private router: Router) { }
+  constructor(
+    private servicoService: ServicoService,
+    private router: Router,
+    private agendamentoService: AgendamentoService
+  ) {}
 
 
   ngOnInit() {
@@ -38,7 +43,10 @@ export class ServicosPageComponent implements OnInit {
 
   // Função chamada quando clicar no card
   selecionarServico(servico: any) {
+
     this.servicoSelecionado = servico;
+
+    this.agendamentoService.agendamento.servico = servico;
   }
 
 // Função Para ir pra tela C2

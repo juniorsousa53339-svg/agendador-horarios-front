@@ -21,6 +21,7 @@
         type="text"
         placeholder="dd/mm/aaaa"
         class="input-data"
+         [(ngModel)]="dataSelecionada"
       >
     </div>
 
@@ -53,8 +54,9 @@
   <div class="footer">
     <button
       class="btn-proximo"
-      [class.ativo]="horarioSelecionado"
-      (click)="irParaConfirmacao()"
+  [disabled]="!horarioSelecionado"
+  [class.ativo]="horarioSelecionado"
+  (click)="irParaConfirmacao()"
     >
       Próximo
     </button>
