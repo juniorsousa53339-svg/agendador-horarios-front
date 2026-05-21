@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { ClienteService } from '../../services/cliente.service';
+import { AgendamentoService } from '../../services/agendamento.service';
+
 @Component({
   selector: 'app-confirmacao-page',
   standalone: true,
@@ -17,28 +20,103 @@ export class ConfirmacaoPageComponent {
 
   erro: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private clienteService: ClienteService,
+    private agendamentoService: AgendamentoService
+  ) {}
 
   confirmar() {
 
     // validação simples
     if (!this.nome || !this.telefone) {
-      this.erro = 'Preencha corretamente seu nome e telefone para continuar.';
+
+      this.erro =
+        'Preencha corretamente seu nome e telefone para continuar.';
+
       return;
     }
 
-    // limpa erro
+    const telefoneRegex = /^\d{11}$/;
+
+if (this.nome.trim().length < 3) {
+
+  this.erro =
+    'Nome deve ter pelo menos 3 caracteres.';
+
+  return;
+}
+
+if (!telefoneRegex.test(this.telefone)) {
+
+  this.erro =
+    'Telefone deve ter exatamente 11 números.';
+
+  return;
+}
+
+
     this.erro = null;
 
-    // simulação (depois vira backend)
-    console.log('Agendamento confirmado:', {
-      nome: this.nome,
-      telefone: this.telefone
+    const cliente = {
+
+      nomeCliente: this.nome,
+      telefoneCliente: this.telefone
+
+    };
+
+    this.clienteService.criar(cliente).subscribe({
+
+      next: (clienteCriado: any) => {
+
+        console.log('Cliente criado:', clienteCriado);
+
+        const agendamento = {
+
+          idCliente: clienteCriado.idCliente,
+
+          idFuncionario:
+            this.agendamentoService.agendamento.funcionario.idFuncionario,
+
+          idServico:
+            this.agendamentoService.agendamento.servico.idServico,
+
+          dataHoraAgendamento:
+            this.agendamentoService.agendamento.dataHora
+
+        };
+
+        console.log('Agendamento:', agendamento);
+
+        this.agendamentoService
+  .criarAgendamento(agendamento)
+  .subscribe({
+
+    next: () => {
+
+      console.log('Agendamento criado com sucesso');
+
+      this.router.navigate(['/cliente/agendar/sucesso']);
+
+    },
+
+    error: () => {
+
+      this.erro = 'Erro ao criar agendamento.';
+
+    }
+
+  });
+
+      },
+
+      error: () => {
+
+        this.erro = 'Erro ao criar cliente.';
+
+      }
+
     });
 
-    // navega pra tela final
-    setTimeout(() => {
-      this.router.navigate(['/cliente/agendar/sucesso']);
-    }, 500);
   }
 }

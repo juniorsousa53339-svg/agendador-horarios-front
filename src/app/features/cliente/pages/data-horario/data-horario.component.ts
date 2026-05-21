@@ -37,19 +37,47 @@ dataSelecionada: string = '';
 
     this.horarioSelecionado = h;
 
-    const dataHora = `${this.dataSelecionada}T${h}`;
+   const dataHora = `${this.dataSelecionada}T${h}:00`;
 
     this.agendamentoService.agendamento.dataHora = dataHora;
 
-    // simulação de erro
-    if (h === '10:00') {
-      this.erro = 'Horário já reservado. Por favor, escolha outra opção disponível.';
-    } else {
-      this.erro = null;
+
+    const idFuncionario =
+  this.agendamentoService.agendamento.funcionario.idFuncionario;
+
+this.agendamentoService
+  .verificarDisponibilidade(idFuncionario, dataHora)
+  .subscribe({
+    next: (disponivel) => {
+
+      if (disponivel) {
+        this.erro = null;
+      } else {
+        this.erro = 'Horário já reservado.';
+      }
+
+    },
+
+    error: () => {
+      this.erro = 'Erro ao verificar disponibilidade.';
     }
+  });
+
+
   }
     constructor(private router: Router, private agendamentoService: AgendamentoService) {}
     irParaConfirmacao() {
+
+
+  if (
+    !this.horarioSelecionado ||
+    !this.dataSelecionada ||
+    this.erro
+  ) {
+    return;
+  }
+
   this.router.navigate(['/cliente/agendar/confirmacao']);
 }
 }
+

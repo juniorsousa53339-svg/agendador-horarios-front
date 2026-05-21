@@ -15,4 +15,22 @@ export class AgendamentoService {
   dataHora: null
 };
 
+verificarDisponibilidade(idFuncionario: string, dataHora: string) {
+
+  return this.http.get<boolean>(
+    `http://localhost:8080/agendamentos/disponivel?idFuncionario=${idFuncionario}&dataHora=${dataHora}`
+  );
+
+}
+
+
+criarAgendamento(dados: any) {
+
+  return this.http.post(
+    'http://localhost:8080/agendamentos',
+    dados
+  );
+
+}
+
 }

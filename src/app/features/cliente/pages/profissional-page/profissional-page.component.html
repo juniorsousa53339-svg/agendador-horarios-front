@@ -14,7 +14,7 @@
 
       <!-- Loop para renderizar os profissionais -->
       <div
-        *ngFor="let prof of Funcionarios"
+        *ngFor="let prof of funcionarios"
         class="card-servico"
         (click)="selecionarProfissional(prof)"
         [class.selecionado]="profissionalSelecionado === prof"
