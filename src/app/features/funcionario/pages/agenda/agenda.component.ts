@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { AgendaService } from '../../agenda.service';
+
+
+
+
 
 @Component({
   selector: 'app-agenda-funcionario',
@@ -10,7 +17,8 @@ import { CommonModule } from '@angular/common';
 })
 export class AgendaFuncionarioComponent implements OnInit {
 
-  nomeFuncionario = 'Junior'; // 🔥 BACKEND
+  constructor(private agendaService: AgendaService) {}
+
 
   diasSemana: any[] = [];
   diaSelecionado: any;
@@ -43,7 +51,7 @@ export class AgendaFuncionarioComponent implements OnInit {
   selecionarDia(dia: any) {
     this.diaSelecionado = dia;
 
-    // 🔥 BACKEND: buscar agendamentos do dia
+    //  BACKEND: buscar agendamentos do dia
     this.carregarAgendamentos();
   }
 
@@ -58,37 +66,40 @@ export class AgendaFuncionarioComponent implements OnInit {
   }
 
   carregarAgendamentos() {
+const idFuncionario = '20bb8351-5fa6-412e-92b9-1b54904f5da0';
 
-    // 🔥 MOCK TEMPORÁRIO
-    this.agendamentos = [
-      {
-        hora: '08:00',
-        nome: 'João',
-        servico: 'Corte',
-        status: 'confirmado'
-      },
-      {
-        hora: '10:00',
-        nome: 'Carlos',
-        servico: 'Barba',
-        status: 'agendado'
-      },
-      {
-        hora: '11:00',
-        nome: 'Marcus',
-        servico: 'Barba',
-        status: 'agendado'
-      },
-      {
-        hora: '16:30',
-        nome: 'Luis Vitor',
-        servico: 'corte',
-        status: 'agendado'
-      },
+const data = this.diaSelecionado.data;
 
-    ];
+const dataHora =
+  data.getFullYear() + '-' +
+  String(data.getMonth() + 1).padStart(2, '0') + '-' +
+  String(data.getDate()).padStart(2, '0') +
+  'T00:00:00';
 
-    // 🔥 FUTURO BACKEND
+  console.log(idFuncionario);
+console.log(dataHora);
+
+this.agendaService
+  .buscarAgendaFuncionario(idFuncionario, dataHora)
+  .subscribe({
+
+    next: (res: any) => {
+
+      console.log(res);
+
+      this.agendamentos = res;
+
+    },
+
+    error: (err) => {
+
+      console.error(err);
+
+    }
+
+  });
+
+    // FUTURO BACKEND
     /*
     this.service.buscarPorDia(this.diaSelecionado.data)
     */

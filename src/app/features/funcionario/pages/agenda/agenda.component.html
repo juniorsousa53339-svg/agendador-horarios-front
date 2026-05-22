@@ -3,7 +3,7 @@
   <!-- HEADER -->
   <div class="header">
     <h1>Minha Agenda</h1>
-    <p>Olá, {{ nomeFuncionario }} 👋</p>
+    <p>Olá, bem-vindo(a) de volta!👋</p>
     <span>Veja seus horários do dia</span>
   </div>
 
@@ -36,13 +36,13 @@
 
       <!-- HORA -->
       <div class="hora">
-        {{ ag.hora }}
+        {{ ag.dataHoraAgendamento | date:'HH:mm' }}
       </div>
 
       <!-- INFO -->
       <div class="info">
-        <h3>{{ ag.nome }}</h3>
-        <p>{{ ag.servico }}</p>
+        <h3>{{ ag.cliente.nomeCliente }}</h3>
+        <p>{{ ag.servico.nomeServico }}</p>
       </div>
 
       <!-- STATUS -->
