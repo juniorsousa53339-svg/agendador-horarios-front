@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -9,36 +10,39 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   //  MOCK (AGORA)
-  totalAgendamentos = 12;
-  totalServicos = 5;
-  totalFuncionarios = 3;
+  totalServicos =  0;
+  totalFuncionarios = 0;
 
-  constructor( private router: Router) { }
-
-
-
-    //  FUTURO (BACKEND)
-    /*
-    this.dashboardService.getResumo().subscribe({
-      next: (res) => {
-        this.totalAgendamentos = res.agendamentosHoje;
-        this.totalServicos = res.servicosAtivos;
-        this.totalFuncionarios = res.funcionarios;
-      },
-      error: (err) => {
-        console.error('Erro ao carregar dashboard', err);
-      }
-    });
-    */
+  constructor(
+    private router: Router,
+    private proprietarioService: ProprietarioService
+  ) {
 
 
 
+}
 
   ngOnInit() {
-    console.log('DASHBOARD DO PROPRIETÁRIO ABRIU');
+    this.proprietarioService.obterResumoDashboard()
+
+.subscribe({
+   next: (res) => {
+
+    console.log('Resposta da API:', res);
+
+     this.totalServicos = res.totalServicos;
+     this.totalFuncionarios = res.totalFuncionarios
+
+   },
+   error: (err) => {
+    console.error('Erro:', err);
+  }
+  
+});
+
   }
 
   menuAberto = false;
@@ -60,10 +64,6 @@ irServicos() {
 
 irFuncionarios() {
   this.router.navigate(['/proprietario/funcionarios']);
-}
-
-irConfiguracoes() {
-  this.router.navigate(['/configuracoes']);
 }
 
 }
