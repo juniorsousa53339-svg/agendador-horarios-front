@@ -12,19 +12,15 @@ import { ProprietarioService } from '../../../../core/services/proprietario/prop
 })
 export class DashboardComponent implements OnInit {
 
-  
+
   totalServicos =  0;
   totalFuncionarios = 0;
 
   constructor(
     private router: Router,
     private proprietarioService: ProprietarioService
-  ) {
-
-
-
-}
-
+  ) {}
+  
   ngOnInit() {
     this.proprietarioService.obterResumoDashboard()
 

@@ -2,7 +2,7 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DashboardResumo } from '../../../shared/models/DashboardResumo.model';
-
+import { Funcionario } from "../../../shared/models/funcionario.model";
 @Injectable({
 
 providedIn: 'root'
@@ -31,7 +31,7 @@ private http = inject(HttpClient);
 
   // PARTE PARA IMPLEMENTAR FUNCIONALIDADES DE FUNCIONÁRIOS
   listarFuncionarios() {
-    return this.http.get(`${this.funcionariosApi}`);
+    return this.http.get<Funcionario>(`${this.funcionariosApi}`);
   }
 
   criarFuncionario(funcionario: any) {

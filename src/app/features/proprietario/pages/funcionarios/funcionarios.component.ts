@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
 
 
 @Component({
@@ -11,39 +11,38 @@ import { Router } from '@angular/router';
   templateUrl: './funcionarios.component.html',
   styleUrl: './funcionarios.component.scss'
 })
-export class FuncionariosComponent {
+export class FuncionariosComponent implements OnInit {
 
 
-  // ================= LISTA MOCK (TEMPORÁRIO)
-  funcionarios = [
+  nomeFuncionario = '';
+  especialidade = '';
+  telefoneFuncionario = '';
 
-    {
-      id: 1,
-    nome: 'joão silva',
-    especialidade: 'corte Masculino',
-    telefone: '(11) 99999-9999'
+  constructor(
+    private router: Router ,
+    private proprietarioService: ProprietarioService
+  ){}
 
-    },
+   ngOnInit() {
+    this.proprietarioService.listarFuncionarios()
 
-     {
-      id: 2,
-    nome: 'Marcos',
-    especialidade: 'corte Masculino',
-    telefone: '(11) 94929-0909'
+.subscribe({
+   next: (res) => {
 
-    },
+    console.log('Resposta da API:', res);
 
-     {
-      id: 3,
-    nome: 'Ronaldo',
-    especialidade: 'corte + barba',
-    telefone: '(11) 94309-1589'
+     this.nomeFuncionario = res.nomeFuncionario; // Exemplo de como acessar o nome do funcionário
+     this.especialidade = res.especialidade; // Exemplo de como acessar a especialidade do funcionário
+     this.telefoneFuncionario = res.telefoneFuncionario; // Exemplo de como acessar o telefone do funcionário
 
-    }
-  ];
+   },
+   error: (err) => {
+    console.error('Erro:', err);
+  }
 
-  constructor(private router: Router){}
+});
 
+}
        // ================= BOTÃO VOLTAR
        voltar() {
          this.router.navigate(['/proprietario/dashboard']);
@@ -74,7 +73,7 @@ export class FuncionariosComponent {
   if (!confirmar) return;
 
 
-  this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
+  // this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
 
   console.log('Funcionário removido:', funcionario);
 
