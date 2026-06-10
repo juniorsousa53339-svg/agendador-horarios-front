@@ -12,7 +12,7 @@ import { ProprietarioService } from '../../../../core/services/proprietario/prop
 })
 export class DashboardComponent implements OnInit {
 
-  //  MOCK (AGORA)
+  
   totalServicos =  0;
   totalFuncionarios = 0;
 
@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
    error: (err) => {
     console.error('Erro:', err);
   }
-  
+
 });
 
   }

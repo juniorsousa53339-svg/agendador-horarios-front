@@ -14,6 +14,8 @@ private http = inject(HttpClient);
 
   private api = 'http://localhost:8080/proprietarios';
   private dashboardApi = 'http://localhost:8080/dashboard';
+  private funcionariosApi = 'http://localhost:8080/funcionarios';
+
 
   criarProprietario(proprietario: any) {
 
@@ -26,5 +28,30 @@ private http = inject(HttpClient);
   obterResumoDashboard() {
     return this.http.get<DashboardResumo>(`${this.dashboardApi}`);
   }
+
+  // PARTE PARA IMPLEMENTAR FUNCIONALIDADES DE FUNCIONÁRIOS
+  listarFuncionarios() {
+    return this.http.get(`${this.funcionariosApi}`);
+  }
+
+  criarFuncionario(funcionario: any) {
+    return this.http.post(
+      this.funcionariosApi,
+      funcionario
+    );
+  }
+
+  editarFuncionario(funcionario: any) {
+    return this.http.put(
+      `${this.funcionariosApi}/${funcionario.id}`,
+      funcionario
+    );
+  }
+
+  excluirFuncionario(id: number) {
+    return this.http.delete(`${this.funcionariosApi}/${id}`);
+  }
+
+// --------------------------------------------------------------
 
   }
