@@ -12,33 +12,33 @@
     <!-- NOME -->
     <div class="input-group">
       <label>Nome</label>
-      <input type="text" [(ngModel)]="form.nome" placeholder="Ex: João Silva">
+      <input type="text" [(ngModel)]="funcionario.nomeFuncionario" placeholder= "Ex: João Silva">
     </div>
 
     <!-- TELEFONE -->
     <div class="input-group">
       <label>Telefone</label>
-      <input type="text" [(ngModel)]="form.telefone" placeholder="(11) 99999-9999">
+      <input type="text" [(ngModel)]="funcionario.telefoneFuncionario" placeholder="(11) 99999-9999">
     </div>
 
     <!-- ESPECIALIDADE -->
     <div class="input-group">
       <label>Especialidade</label>
-      <input type="text" [(ngModel)]="form.especialidade" placeholder="Corte Masculino">
+      <input type="text" [(ngModel)]="funcionario.especialidade" placeholder="Corte Masculino">
     </div>
 
     <div class="input-group">
       <label>Email</label>
-      <input type="email" [(ngModel)]="form.Email" placeholder="LucDev@gmail.com">
+      <input type="email" [(ngModel)]="funcionario.email" placeholder="LucDev@gmail.com">
     </div>
 
     <div class="input-group">
       <label>Senha</label>
-      <input type="password" [(ngModel)]="form.Senha" placeholder="@1234">
+      <input type="password" [(ngModel)]="funcionario.senha" placeholder="@1234">
     </div>
 
     <!-- BOTÃO -->
-    <button class="btn-salvar" (click)="salvar()">
+    <button class="btn-salvar" (click)="cria()">
       Salvar Funcionário
     </button>
 

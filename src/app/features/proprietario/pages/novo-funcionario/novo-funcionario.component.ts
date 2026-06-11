@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { FuncionarioService } from './../../../cliente/services/funcionario.service';
+import { Funcionario } from './../../../../shared/models/funcionario.model';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
 
 @Component({
   selector: 'app-novo-funcionario',
@@ -12,46 +15,36 @@ import { Router } from '@angular/router';
 })
 export class NovoFuncionarioComponent {
 
-  constructor(private router: Router) {}
+ funcionario: Funcionario = {
+  idFuncionario: '',
+  nomeFuncionario: '',
+  telefoneFuncionario: '',
+  especialidade: '',
+  email: '',
+  senha: ''
+ };
 
-  //  FORM (mock por enquanto)
-  form = {
-    nome: '',
-    telefone: '',
-    especialidade: '',
-    Email: '',
-    Senha:'',
-  };
 
-  voltar() {
-    this.router.navigate(['/proprietario/funcionarios']);
-  }
 
-  salvar() {
 
-    // VALIDAÇÃO SIMPLES
-    if (!this.form.nome || !this.form.telefone || !this.form.especialidade) {
-      alert('Preencha todos os campos');
-      return;
-    }
+  constructor(
+    private router: Router,
+    private proprietarioService: ProprietarioService,
 
-    // BACKEND FUTURO
-    /*
-    this.funcionarioService.criar(this.form).subscribe({
+  ) {}
+
+  cria() {
+    this.proprietarioService.criar(this.funcionario).subscribe({
       next: () => {
-        this.router.navigate(['/proprietario/sucesso'], {
-          state: { mensagem: 'Funcionário criado com sucesso!' }
-        });
+        this.router.navigate(['/proprietario/funcionarios']);
       },
       error: (err) => {
-        console.error(err);
+        console.error('Erro:', err);
       }
     });
-    */
+  }
 
-    //  MOCK (por enquanto)
-    console.log('Salvando funcionário:', this.form);
-
+  voltar() {
     this.router.navigate(['/proprietario/funcionarios']);
   }
 }

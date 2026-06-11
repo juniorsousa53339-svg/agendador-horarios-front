@@ -7,4 +7,9 @@ export interface Funcionario {
   telefoneFuncionario: string;
 
   especialidade: string;
+
+  email: string;
+
+  senha: string;
+
 }
