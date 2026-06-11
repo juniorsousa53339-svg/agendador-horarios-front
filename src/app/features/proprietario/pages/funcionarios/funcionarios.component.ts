@@ -1,3 +1,4 @@
+import { Funcionario } from './../../../../shared/models/funcionario.model';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,33 +14,26 @@ import { ProprietarioService } from '../../../../core/services/proprietario/prop
 })
 export class FuncionariosComponent implements OnInit {
 
-
-  nomeFuncionario = '';
-  especialidade = '';
-  telefoneFuncionario = '';
+  funcionario: Funcionario[] = [];
 
   constructor(
     private router: Router ,
-    private proprietarioService: ProprietarioService
+    private proprietarioService: ProprietarioService,
+
+
   ){}
 
    ngOnInit() {
-    this.proprietarioService.listarFuncionarios()
+    this.proprietarioService.listarFuncionarios().subscribe({
 
-.subscribe({
    next: (res) => {
 
-    console.log('Resposta da API:', res);
-
-     this.nomeFuncionario = res.nomeFuncionario; // Exemplo de como acessar o nome do funcionário
-     this.especialidade = res.especialidade; // Exemplo de como acessar a especialidade do funcionário
-     this.telefoneFuncionario = res.telefoneFuncionario; // Exemplo de como acessar o telefone do funcionário
+   this.funcionario = res;
 
    },
    error: (err) => {
     console.error('Erro:', err);
   }
-
 });
 
 }

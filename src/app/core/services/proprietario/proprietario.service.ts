@@ -1,3 +1,4 @@
+import { FuncionariosComponent } from './../../../features/proprietario/pages/funcionarios/funcionarios.component';
 
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -30,8 +31,9 @@ private http = inject(HttpClient);
   }
 
   // PARTE PARA IMPLEMENTAR FUNCIONALIDADES DE FUNCIONÁRIOS
+
   listarFuncionarios() {
-    return this.http.get<Funcionario>(`${this.funcionariosApi}`);
+    return this.http.get<Funcionario[]>(`${this.funcionariosApi + '/listar'}`);
   }
 
   criarFuncionario(funcionario: any) {
