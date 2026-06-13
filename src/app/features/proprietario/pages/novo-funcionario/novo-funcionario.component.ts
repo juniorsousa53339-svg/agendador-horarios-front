@@ -1,6 +1,6 @@
-import { FuncionarioService } from './../../../cliente/services/funcionario.service';
+
 import { Funcionario } from './../../../../shared/models/funcionario.model';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { ProprietarioService } from '../../../../core/services/proprietario/prop
 export class NovoFuncionarioComponent {
 
  funcionario: Funcionario = {
-  idFuncionario: '',
+
   nomeFuncionario: '',
   telefoneFuncionario: '',
   especialidade: '',

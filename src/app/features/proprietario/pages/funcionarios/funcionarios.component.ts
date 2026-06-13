@@ -50,13 +50,10 @@ export class FuncionariosComponent implements OnInit {
 
   // ================= EDITAR
   editar(funcionario: any) {
-  console.log('Clicou em editar', funcionario);
-
-  this.router.navigate(['/proprietario/funcionarios/editar/:id']);
+ console.log(funcionario.idFuncionario);
 
 
-    //  FUTURO BACKEND:
-    // this.router.navigate(['/proprietario/funcionarios/editar', funcionario.id]);
+ this.router.navigate(['/proprietario/funcionarios/editar', funcionario.idFuncionario]);
   }
 
   excluir(funcionario: any) {

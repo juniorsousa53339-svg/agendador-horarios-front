@@ -1,5 +1,6 @@
 
 
+
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { DashboardResumo } from '../../../shared/models/DashboardResumo.model';
@@ -30,7 +31,6 @@ private http = inject(HttpClient);
     return this.http.get<DashboardResumo>(`${this.dashboardApi}`);
   }
 
-  // PARTE PARA IMPLEMENTAR FUNCIONALIDADES DE FUNCIONÁRIOS
 
   listarFuncionarios() {
     return this.http.get<Funcionario[]>(`${this.funcionariosApi + '/listar'}`);
@@ -42,15 +42,18 @@ private http = inject(HttpClient);
 
   editarFuncionario(funcionario: any) {
     return this.http.put(
-      `${this.funcionariosApi}/${funcionario.id}`,
+      `${this.funcionariosApi}/${funcionario.id}/`,
       funcionario
     );
   }
 
-  excluirFuncionario(id: number) {
-    return this.http.delete(`${this.funcionariosApi}/${id}`);
-  }
+  buscarFun(idFuncionario: string | null) {
+    return this.http.get<Funcionario>(
+ `${this.funcionariosApi}/`);
+}
 
-// --------------------------------------------------------------
+  excluirFuncionario() {
+    return this.http.delete(this.funcionariosApi);
+  }
 
   }

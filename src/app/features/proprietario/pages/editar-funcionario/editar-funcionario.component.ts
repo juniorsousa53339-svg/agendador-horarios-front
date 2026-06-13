@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
+import { Funcionario } from './../../../../shared/models/funcionario.model';
+
 @Component({
   selector: 'app-editar-funcionario',
   standalone: true,
@@ -12,41 +15,42 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditarFuncionarioComponent {
 
-  funcionario: any = {
-    nome: '',
-    telefone: '',
-    especialidade: '',
-    email: '',
-    senha: '',
-  };
+
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private proprietarioService: ProprietarioService
   ) {}
+
+
+  funcionario = {
+   nomeFuncionario: '',
+   telefoneFuncionario: '',
+    especialidade : '',
+    email: '',
+    senha: ''
+
+}
 
   ngOnInit() {
 
+
+
     //  pega ID da rota
-    const id = this.route.snapshot.paramMap.get('id');
+    const idFuncionario = this.route.snapshot.paramMap.get('id');
+   
 
-    console.log('ID do funcionário:', id);
 
-    //  MOCK (AGORA)
-    this.funcionario = {
-      nome: 'João Silva',
-      telefone: '(11) 99999-9999',
-      especialidade: 'Corte Masculino',
-      email: 'joao123@gmail.com',
-      senha: '12345678'
-    };
 
-    //  FUTURO BACKEND
-    /*
-    this.funcionarioService.buscarPorId(id).subscribe({
-      next: (res) => this.funcionario = res
+    console.log('ID do funcionário:', idFuncionario);
+
+    this.proprietarioService.buscarFun( idFuncionario
+    ).subscribe({
+      next: (res) =>
+       this.funcionario = res
     });
-    */
+
   }
 
   salvar() {
@@ -54,11 +58,17 @@ export class EditarFuncionarioComponent {
     console.log('Salvando:', this.funcionario);
 
     // FUTURO BACKEND
-    /*
-    this.funcionarioService.atualizar(this.funcionario).subscribe({
-      next: () => this.router.navigate(['/proprietario/funcionarios'])
+
+    this.proprietarioService.editarFuncionario(this.funcionario).subscribe({
+      next: () =>
+
+
+
+        this.router.navigate(['/proprietario/funcionarios/editar/'])
+
+
     });
-    */
+
 
     //  AGORA (simulação)
     this.router.navigate(['/proprietario/funcionarios']);

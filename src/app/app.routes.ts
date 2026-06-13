@@ -93,7 +93,7 @@ export const routes: Routes = [
   path: 'proprietario/funcionarios/editar/:id',
   loadComponent: () =>
     import('./features/proprietario/pages/editar-funcionario/editar-funcionario.component')
-      .then(m => m.EditarFuncionarioComponent)
+      .then(m => m.EditarFuncionarioComponent )
 },
 
 {
