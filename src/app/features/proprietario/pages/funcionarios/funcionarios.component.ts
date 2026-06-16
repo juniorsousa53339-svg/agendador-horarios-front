@@ -37,18 +37,18 @@ export class FuncionariosComponent implements OnInit {
 });
 
 }
-       // ================= BOTÃO VOLTAR
+
        voltar() {
          this.router.navigate(['/proprietario/dashboard']);
        }
 
 
-        // ================= NOVO FUNCIONÁRIO
+
   novoFuncionario() {
     this.router.navigate(['/proprietario/funcionarios/novo']);
   }
 
-  // ================= EDITAR
+ 
   editar(funcionario: any) {
  console.log(funcionario.idFuncionario);
 
@@ -56,29 +56,21 @@ export class FuncionariosComponent implements OnInit {
  this.router.navigate(['/proprietario/funcionarios/editar', funcionario.idFuncionario]);
   }
 
-  excluir(funcionario: any) {
+  excluir(funcionario: any ) {
 
 
-  const confirmar = confirm(`Deseja excluir ${funcionario.nome}?`);
-
-  if (!confirmar) return;
+  console.log('Funcionário removido:', funcionario.nomeFuncionario);
 
 
-  // this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
-
-  console.log('Funcionário removido:', funcionario);
-
-  //  FUTURO BACKEND
-  /*
-  this.funcionarioService.excluir(funcionario.id).subscribe({
+  this.proprietarioService.excluirFuncionario(funcionario.nomeFuncionario).subscribe({
     next: () => {
-      this.funcionarios = this.funcionarios.filter(f => f.id !== funcionario.id);
+      this.router.navigate(['/proprietario/funcionarios']);
     },
     error: (err) => {
       console.error('Erro ao excluir', err);
     }
   });
-  */
+
 }
 
 }

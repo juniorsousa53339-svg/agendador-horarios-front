@@ -96,6 +96,8 @@ export const routes: Routes = [
       .then(m => m.EditarFuncionarioComponent )
 },
 
+
+
 {
   path: 'proprietario/servicos',
   component: ServicosComponent

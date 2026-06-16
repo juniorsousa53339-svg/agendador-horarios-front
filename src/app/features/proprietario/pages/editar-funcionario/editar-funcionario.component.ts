@@ -35,42 +35,31 @@ export class EditarFuncionarioComponent {
 
   ngOnInit() {
 
-
-
-    //  pega ID da rota
     const idFuncionario = this.route.snapshot.paramMap.get('id');
-   
-
-
 
     console.log('ID do funcionário:', idFuncionario);
 
-    this.proprietarioService.buscarFun( idFuncionario
+    this.proprietarioService.buscarFun(  idFuncionario
     ).subscribe({
       next: (res) =>
        this.funcionario = res
     });
 
   }
-
   salvar() {
 
-    console.log('Salvando:', this.funcionario);
+  console.log('Salvando:', this.funcionario);
 
-    // FUTURO BACKEND
+
 
     this.proprietarioService.editarFuncionario(this.funcionario).subscribe({
       next: () =>
 
-
-
-        this.router.navigate(['/proprietario/funcionarios/editar/'])
+       this.router.navigate(['/proprietario/funcionarios'])
 
 
     });
 
-
-    //  AGORA (simulação)
     this.router.navigate(['/proprietario/funcionarios']);
   }
 
