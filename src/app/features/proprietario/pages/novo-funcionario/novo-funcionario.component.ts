@@ -30,7 +30,6 @@ export class NovoFuncionarioComponent {
 
   constructor(
     private router: Router,
-    private proprietarioService: ProprietarioService,
     private funcionarioService: FuncionarioService
 
   ) {}

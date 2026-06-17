@@ -1,3 +1,6 @@
+import { ServicoService } from './../../../cliente/services/servico.service';
+import { FuncionarioService } from './../../../cliente/services/funcionario.service';
+import { Servico } from './../../../../shared/models/servico.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -11,26 +14,35 @@ import { FormsModule } from '@angular/forms';
 })
 export class NovoServicoComponent {
 
-  constructor(private router: Router) {}
+servico : Servico = {
 
-  servico = {
-    nome: '',
-    duracao: '',
-    preco: 0
+  nomeServico: '',
+
+  descricaoServico: '',
+
+  precoServico: 0,
+
+  duracaoMinutos: 0
   };
 
+  constructor(
+    private router: Router,
+    private servicoService : ServicoService
+  ) {}
+
+
+
   salvar() {
-    console.log('Serviço salvo:', this.servico);
+    this.servicoService.criarServicos(this.servico).subscribe({
+   next: () => {
+   this.router.navigate(['/proprietario/servicos']);
+ },
+   error: () => {
 
-    //  FUTURO BACKEND
-    /*
-    this.servicoService.criar(this.servico).subscribe(() => {
-      this.router.navigate(['/proprietario/servicos']);
+    console.error('Erro')
+   }
     });
-    */
 
-    // MOCK
-    this.router.navigate(['/proprietario/servicos']);
   }
 
   voltar() {
