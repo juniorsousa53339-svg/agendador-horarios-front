@@ -9,7 +9,7 @@ import { Servico } from '../../../shared/models/servico.model';
 })
 export class ServicoService {
 
-private http = inject(HttpClient);
+  private http = inject(HttpClient);
 
   private servicosApi = 'http://localhost:8080/servicos';
 
@@ -18,19 +18,19 @@ private http = inject(HttpClient);
   }
 
   criarServicos(Servico: any) {
-    return this.http.post( this.servicosApi, Servico  );
+    return this.http.post(this.servicosApi, Servico);
   }
 
-  editarServicos(servico: any) {
+  editarServicos(Servico: any) {
     return this.http.put(
-      `${this.servicosApi}/${servico.idServico}`,
-      servico
+      `${this.servicosApi}/${Servico.idServico}`,
+      Servico
     );
   }
 
-  buscarServicos(idServico: string | null){
-    return this.http.get<Servico>( `${this.servicosApi}/${idServico}`,
-      );
+  buscarServicos(idServico: string | null) {
+    return this.http.get<Servico>(`${this.servicosApi}/${idServico}`,
+    );
   }
 
   excluirServicos(nomeServico: string | null) {

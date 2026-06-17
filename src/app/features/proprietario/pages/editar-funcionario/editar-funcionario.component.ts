@@ -4,9 +4,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
-import { Funcionario } from './../../../../shared/models/funcionario.model';
-
 @Component({
   selector: 'app-editar-funcionario',
   standalone: true,

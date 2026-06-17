@@ -58,9 +58,12 @@ export class ServicosComponent implements OnInit {
 
    next: () => {
     this.router.navigate(['/proprietario/servicos'])
-   }
+   },
+   erro: () => {
 
-   })
+    console.error('Erro ao excluir')
+   }
+   });
 
   }
 
