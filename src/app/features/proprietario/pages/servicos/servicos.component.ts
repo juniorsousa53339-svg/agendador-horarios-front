@@ -1,4 +1,5 @@
 
+
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -55,13 +56,12 @@ export class ServicosComponent implements OnInit {
     console.log('Excluir serviço:', servico.nomeServico);
 
    this.servicoService.excluirServicos(servico.nomeServico).subscribe({
-
    next: () => {
     this.router.navigate(['/proprietario/servicos'])
    },
-   erro: () => {
+   error: (err) => {
 
-    console.error('Erro ao excluir')
+    console.error('Erro ao excluir, err')
    }
    });
 
