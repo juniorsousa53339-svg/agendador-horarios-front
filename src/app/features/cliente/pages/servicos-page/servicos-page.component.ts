@@ -28,7 +28,7 @@ export class ServicosPageComponent implements OnInit {
 
 
   ngOnInit() {
-    this.servicoService.listar().subscribe({
+    this.servicoService.listarServicos().subscribe({
       next: (data) => {
         this.servicos = data;
       },

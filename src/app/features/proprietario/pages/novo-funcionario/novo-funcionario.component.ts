@@ -1,3 +1,4 @@
+import { FuncionarioService } from './../../../cliente/services/funcionario.service';
 
 import { Funcionario } from './../../../../shared/models/funcionario.model';
 import { Component} from '@angular/core';
@@ -30,16 +31,17 @@ export class NovoFuncionarioComponent {
   constructor(
     private router: Router,
     private proprietarioService: ProprietarioService,
+    private funcionarioService: FuncionarioService
 
   ) {}
 
   cria() {
-    this.proprietarioService.criar(this.funcionario).subscribe({
+    this.funcionarioService.criar(this.funcionario).subscribe({
       next: () => {
         this.router.navigate(['/proprietario/funcionarios']);
       },
-      error: (err) => {
-        console.error('Erro:', err);
+      error: () => {
+        console.error('Erro:');
       }
     });
   }

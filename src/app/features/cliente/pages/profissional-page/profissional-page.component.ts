@@ -24,12 +24,12 @@ export class ProfissionalPageComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
 
-    this.funcionarioService.listar().subscribe({
+    this.funcionarioService.listarFuncionarios().subscribe({
 
-      next: (data) => {
-        this.funcionarios = data;
+      next: (res) => {
+        this.funcionarios = res;
       },
 
       error: (err) => {
