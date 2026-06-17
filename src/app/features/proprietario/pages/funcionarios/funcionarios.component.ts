@@ -1,3 +1,4 @@
+import { FuncionarioService } from './../../../cliente/services/funcionario.service';
 import { Funcionario } from './../../../../shared/models/funcionario.model';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -19,12 +20,13 @@ export class FuncionariosComponent implements OnInit {
   constructor(
     private router: Router ,
     private proprietarioService: ProprietarioService,
+    private funcionarioService : FuncionarioService
 
 
   ){}
 
    ngOnInit() {
-    this.proprietarioService.listarFuncionarios().subscribe({
+    this.funcionarioService.listarFuncionarios().subscribe({
 
    next: (res) => {
 
@@ -48,7 +50,7 @@ export class FuncionariosComponent implements OnInit {
     this.router.navigate(['/proprietario/funcionarios/novo']);
   }
 
- 
+
   editar(funcionario: any) {
  console.log(funcionario.idFuncionario);
 
@@ -62,7 +64,7 @@ export class FuncionariosComponent implements OnInit {
   console.log('Funcionário removido:', funcionario.nomeFuncionario);
 
 
-  this.proprietarioService.excluirFuncionario(funcionario.nomeFuncionario).subscribe({
+  this.funcionarioService.excluirFuncionario(funcionario.nomeFuncionario).subscribe({
     next: () => {
       this.router.navigate(['/proprietario/funcionarios']);
     },

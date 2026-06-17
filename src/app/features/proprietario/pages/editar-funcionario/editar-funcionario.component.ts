@@ -1,3 +1,4 @@
+import { FuncionarioService } from './../../../cliente/services/funcionario.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,8 @@ export class EditarFuncionarioComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private proprietarioService: ProprietarioService
+    private proprietarioService: ProprietarioService,
+    private funcionarioService: FuncionarioService
   ) {}
 
 
@@ -39,7 +41,7 @@ export class EditarFuncionarioComponent {
 
     console.log('ID do funcionário:', idFuncionario);
 
-    this.proprietarioService.buscarFun(  idFuncionario
+    this.funcionarioService.buscarFun(  idFuncionario
     ).subscribe({
       next: (res) =>
        this.funcionario = res
@@ -52,7 +54,7 @@ export class EditarFuncionarioComponent {
 
 
 
-    this.proprietarioService.editarFuncionario(this.funcionario).subscribe({
+    this.funcionarioService.editarFuncionario(this.funcionario).subscribe({
       next: () =>
 
        this.router.navigate(['/proprietario/funcionarios'])
