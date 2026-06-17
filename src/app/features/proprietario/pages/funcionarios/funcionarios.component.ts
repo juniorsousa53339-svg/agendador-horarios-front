@@ -3,7 +3,7 @@ import { Funcionario } from './../../../../shared/models/funcionario.model';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProprietarioService } from '../../../../core/services/proprietario/proprietario.service';
+
 
 
 @Component({
@@ -19,7 +19,6 @@ export class FuncionariosComponent implements OnInit {
 
   constructor(
     private router: Router ,
-    private proprietarioService: ProprietarioService,
     private funcionarioService : FuncionarioService
 
 
