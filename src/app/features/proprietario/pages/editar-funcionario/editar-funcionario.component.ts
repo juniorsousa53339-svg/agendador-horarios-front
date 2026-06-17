@@ -21,7 +21,6 @@ export class EditarFuncionarioComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private proprietarioService: ProprietarioService,
     private funcionarioService: FuncionarioService
   ) {}
 

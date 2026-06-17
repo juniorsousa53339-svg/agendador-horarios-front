@@ -10,13 +10,16 @@
   <div class="form">
 
     <label>Nome do serviço</label>
-    <input type="text" placeholder="Ex: Corte Masculino">
+    <input type="text" [(ngModel)]="servico.nomeServico" placeholder="Ex: Corte Masculino">
+
+    <label>Descrição</label>
+     <input type="text" [(ngModel)]="servico.descricaoServico" placeholder="Ex: Corte Tradicional">
 
     <label>Duração</label>
-    <input type="text" placeholder="Ex: 30 min">
+      <input type="number" [(ngModel)]="servico.duracaoMinutos" placeholder="Ex: 30 min">
 
     <label>Preço</label>
-    <input type="number" placeholder="Ex: 30.00">
+     <input type="text" [(ngModel)]="servico.precoServico" placeholder="Ex: 30.00">
 
   </div>
 

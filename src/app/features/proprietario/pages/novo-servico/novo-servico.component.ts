@@ -1,5 +1,4 @@
 import { ServicoService } from './../../../cliente/services/servico.service';
-import { FuncionarioService } from './../../../cliente/services/funcionario.service';
 import { Servico } from './../../../../shared/models/servico.model';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -42,7 +41,6 @@ servico : Servico = {
     console.error('Erro')
    }
     });
-
   }
 
   voltar() {
