@@ -66,7 +66,7 @@ export class AgendaFuncionarioComponent implements OnInit {
   }
 
   carregarAgendamentos() {
-const idFuncionario = '3f11b4b0-21bd-46f9-9991-fe6baf02c660';
+const idFuncionario = '45cfb947-4006-4511-a9ba-3068c92a2d76';
 
 const data = this.diaSelecionado.data;
 

@@ -38,13 +38,13 @@ export class LoginComponent {
   // ==========================
   const usuariosMock = [
     {
-      email: 'proprietario@alfatech.com',
-      senha: '123456',
+      email: 'proprietarioSistema@',
+      senha: '26',
       role: 'PROPRIETARIO'
     },
     {
-      email: 'funcionario@alfatech.com',
-      senha: '123456',
+      email: 'funcionarioluc',
+      senha: '2026',
       role: 'FUNCIONARIO'
     }
   ];
