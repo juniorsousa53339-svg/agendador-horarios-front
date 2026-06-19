@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -7,14 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
+  private http = inject(HttpClient);
+
   private apiUrl = 'http://localhost:8080/clientes';
 
-  constructor(private http: HttpClient) {}
-
   criar(cliente: any): Observable<any> {
-
-  return this.http.post<any>(this.apiUrl, cliente);
-
-}
+    // Requisição limpa: enviando apenas a URL e os dados do cliente, sem os headers de autenticação
+    return this.http.post<any>(this.apiUrl, cliente);
+  }
 
 }

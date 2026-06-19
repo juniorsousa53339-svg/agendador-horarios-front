@@ -1,7 +1,8 @@
 
-import { Injectable } from '@angular/core';
+import {  inject,Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../core/services/auth.service';
 
 
 
@@ -10,15 +11,19 @@ import { Observable } from 'rxjs';
 })
 export class AgendaService {
 
- private apiUrl = 'http://localhost:8080/agendamentos/funcionarios';
+  private http = inject(HttpClient);
+    private authService = inject(AuthService);
 
-  constructor(private http: HttpClient) {}
+
+ private apiUrl = 'http://localhost:8080/agendamentos/funcionarios';
 
   buscarAgendaFuncionario(idFuncionario: string, dataHora: string){
 
+    const headers = this.authService.getAuthHeaders();
+
     return this.http.get(
 
-       `${this.apiUrl}/${idFuncionario}/agendamentos?dataHora=${dataHora} `
+       `${this.apiUrl}/${idFuncionario}/agendamentos?dataHora=${dataHora} `,{headers}
     );
   }
 

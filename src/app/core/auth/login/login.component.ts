@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -19,63 +19,34 @@ export class LoginComponent {
   //  Aqui você pode exibir erros vindos do backend futuramente
   erro: string | null = null;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) { }
+
+
 
   login() {
 
-  // ==========================
-  // VALIDAÇÃO BÁSICA
-  // ==========================
-  if (!this.email || !this.senha) {
-    this.erro = 'Preencha todos os campos';
-    return;
+    this.authService
+      .autenticar(this.email, this.senha)
+      .subscribe({
+        next: (usuario) => {
+
+          this.authService.setUser(usuario);
+
+          if (usuario.roles.includes('ROLE_FUNCIONARIO')) {
+
+            this.router.navigate(['/funcionario/agenda']);
+
+          } else if (usuario.roles.includes('ROLE_PROPRIETARIO')) {
+
+            this.router.navigate(['/proprietario/dashboard']);
+          }
+        },
+        error: () => {
+          this.erro = 'Email ou senha inválidos';
+        }
+      });
   }
-
-  this.erro = null;
-
-  // ==========================
-  // MOCK DE USUÁRIOS (SIMULANDO BACKEND)
-  // ==========================
-  const usuariosMock = [
-    {
-      email: 'proprietarioSistema@',
-      senha: '26',
-      role: 'PROPRIETARIO'
-    },
-    {
-      email: 'funcionarioluc',
-      senha: '2026',
-      role: 'FUNCIONARIO'
-    }
-  ];
-
-  // ==========================
-  // VERIFICA LOGIN
-  // ==========================
-  const usuarioEncontrado = usuariosMock.find(
-    u => u.email === this.email && u.senha === this.senha
-  );
-
-  // ==========================
-  // LOGIN INVÁLIDO
-  // ==========================
-  if (!usuarioEncontrado) {
-    this.erro = 'Email ou senha inválidos';
-    return;
-  }
-
-  // ==========================
-  // REDIRECIONAMENTO POR ROLE
-  // ==========================
-  if (usuarioEncontrado.role === 'FUNCIONARIO') {
-
-    // funcionário → agenda dele
-    this.router.navigate(['/funcionario/agenda']);
-
-  } else if (usuarioEncontrado.role === 'PROPRIETARIO') {
-
-    // proprietário → dashboard admin
-   this.router.navigateByUrl('/proprietario/dashboard');
-  }
-}
 }
