@@ -17,9 +17,8 @@ export class ServicoService {
 
   listarServicos() {
 
-const headers = this.authService.getAuthHeaders();
 
-    return this.http.get<Servico[]>(`${this.servicosApi + '/listar'}`,{headers}
+    return this.http.get<Servico[]>(`${this.servicosApi + '/listar'}`
       );
   }
 

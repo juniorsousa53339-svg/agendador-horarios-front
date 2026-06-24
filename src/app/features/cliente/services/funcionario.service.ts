@@ -16,8 +16,8 @@ private http = inject(HttpClient);
 
   listarFuncionarios() {
 
-     const headers = this.authService.getAuthHeaders();
-    return this.http.get<Funcionario[]>(`${this.funcionariosApi + '/listar'}`,{headers}
+
+    return this.http.get<Funcionario[]>(`${this.funcionariosApi + '/listar'}`
     );
   }
 
