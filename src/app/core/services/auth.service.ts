@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../../shared/models/auth.model';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private authApi = 'http://localhost:8080/auth/auth/me';
+  private authApi = `${environment.apiUrl}/auth/auth/me`;
   private user: any = null;
   private credencial: string | null = null;
 

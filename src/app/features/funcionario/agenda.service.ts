@@ -3,6 +3,7 @@ import {  inject,Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
+import { environment } from '../../../environments/environment';
 
 
 
@@ -15,7 +16,7 @@ export class AgendaService {
     private authService = inject(AuthService);
 
 
- private apiUrl = 'http://localhost:8080/agendamentos/funcionarios';
+ private apiUrl = `${environment.apiUrl}/agendamentos/funcionarios`;
 
   buscarAgendaFuncionario(idFuncionario: string, dataHora: string){
 

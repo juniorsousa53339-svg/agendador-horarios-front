@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Funcionario } from '../../../shared/models/funcionario.model';
 import { AuthService } from '../../../core/services/auth.service';
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,7 @@ export class FuncionarioService {
 private http = inject(HttpClient);
   private authService = inject(AuthService);
 
-   private funcionariosApi = 'http://localhost:8080/funcionarios';
+   private funcionariosApi = `${environment.apiUrl}/funcionarios`;
 
   listarFuncionarios() {
 

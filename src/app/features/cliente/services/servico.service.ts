@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 
 import { Servico } from '../../../shared/models/servico.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ServicoService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
 
-  private servicosApi = 'http://localhost:8080/servicos';
+  private servicosApi = `${environment.apiUrl}/servicos`;
 
   listarServicos() {
 

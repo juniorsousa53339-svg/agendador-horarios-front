@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      var segmento = window.location.pathname
+        .slice('/agendador-horarios-front'.length)
+        .replace(/^\//, '');
+      var query = window.location.search.slice(1);
+      var hash = window.location.hash;
+      var url = '/agendador-horarios-front/#/' + segmento + (query ? '?' + query : '') + hash;
+      window.location.replace(url);
+    </script>
+  </head>
+  <body></body>
+</html>

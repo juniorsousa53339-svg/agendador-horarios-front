@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AgendamentoService {
 verificarDisponibilidade(idFuncionario: string, dataHora: string) {
 
   return this.http.get<boolean>(
-    `http://localhost:8080/agendamentos/disponivel?idFuncionario=${idFuncionario}&dataHora=${dataHora}`
+    `${environment.apiUrl}/agendamentos/disponivel?idFuncionario=${idFuncionario}&dataHora=${dataHora}`
   );
 
 }
@@ -27,7 +28,7 @@ verificarDisponibilidade(idFuncionario: string, dataHora: string) {
 criarAgendamento(dados: any) {
 
   return this.http.post(
-    'http://localhost:8080/agendamentos',
+    `${environment.apiUrl}/agendamentos`,
     dados
   );
 
